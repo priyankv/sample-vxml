@@ -47,7 +47,7 @@ var CertificationCourseContext = function(course, metadata) {
     };
 
     this.lessonOrQuizFinished = function() {
-        var isAtLastLessonOfChapter = this.isAtLesson && this.currentInteraction.siblingOnRight.data.type == "quiz";
+        var isAtLastLessonOfChapter = this.isAtLesson() && this.currentInteraction.siblingOnRight.data.type == "quiz";
         if(isAtLastLessonOfChapter){
             this.hasFinishedLastLessonOfChapter = true;
         }
