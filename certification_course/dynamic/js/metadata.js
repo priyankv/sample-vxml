@@ -20,7 +20,7 @@ var metaData = {
          "flw.registration.welcome" : "/ananya/resources/audio/flwRegistration/welcome.wav",
          "flw.registration.submit.url" : "../flw/register/",
          "flw.registration.max.record.time" : "10s",
-         "audioFileBase" : "../audio/",
+         "audioFileBase" : "../../audio/",
          "noInputDisconnectAudio" : "error.no.input.disconnect.wav",
          "noInputRetryAudio" : "error.no.input.retry.wav",
          "flw.registration.no.input.for.district" : "/ananya/resources/audio/flwRegistration/no.input.for.district.wav",
