@@ -44,7 +44,7 @@
         <block>
             <audio expr="callContext.courseWelcomeMessage()"/>
             <script>
-                promptContext.setupForReadingInputFromUser('welcomePromptFinished', {1, 2});
+                promptContext.setupForReadingInputFromUser('welcomePromptFinished', [1, 2]);
             </script>
             <goto next="#captureInputWithReprompt"/>
         </block>
