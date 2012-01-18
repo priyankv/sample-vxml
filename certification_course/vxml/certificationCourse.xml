@@ -49,7 +49,6 @@
             <goto next="#captureInputWithReprompt"/>
         </block>
     </form>
-
     <form id="welcomePromptFinished">
         <block>
             <if cond="promptContext.getInputFromUser() == 2">
@@ -65,77 +64,20 @@
     <form id="lesson">
         <block>
             <audio expr="callContext.currentInteractionLesson()"/>
-        </block>
-
-        <field name="repeatOrGoToNextLessonSelection">
-            <prompt bargein="true">
-                <audio expr="callContext.currentInteractionMenu()"/>
-            </prompt>
-            <prompt bargein="true" cond="!callContext.isAtCourseRoot()">
-                <audio expr="promptContext.audioForOptionToGoToTopLevel()"/>
-            </prompt>
-            <grammar mode="dtmf" version="1.0" root="root">
-                <rule id="root">
-                    <one-of>
-                        <item>0</item>
-                        <item>1</item>
-                        <item>2</item>
-                        <item>3</item>
-                        <item>4</item>
-                        <item>5</item>
-                        <item>6</item>
-                        <item>7</item>
-                        <item>8</item>
-                        <item>9</item>
-                        <item>*</item>
-                        <item>#</item>
-                    </one-of>
-                </rule>
-            </grammar>
-
-            <noinput>
-                <goto nextitem="noInputAction"/>
-            </noinput>
-
-            <filled>
-                <if cond="repeatOrGoToNextLessonSelection == 1">
-                    <goto next="#controller"/>
-                <elseif cond="repeatOrGoToNextLessonSelection == 2"/>
-                    <script>
-                        callContext.lessonOrQuizFinished();
-                    </script>
-                    <goto next="#controller"/>
-                <else/>
-                    <goto nextitem="invalidInputAction"/>
-                </if>
-            </filled>
-        </field>
-
-        <block name="noInputAction">
             <script>
-                promptContext.gotNoInput();
+                promptContext.setupForReadingInputFromUser('lessonPromptFinished', [1, 2]);
             </script>
-            <if cond="promptContext.hasExceededMaxNoInputs()">
-                <audio expr="promptContext.audioForNoInputDisconnect()"/>
-                <disconnect/>
-            <else/>
-                <clear/>
-                <audio expr="promptContext.audioForNoInputRetry()"/>
-                <goto nextitem="repeatOrGoToNextLessonSelection"/>
-            </if>
+            <goto next="#captureInputWithReprompt"/>
         </block>
-
-        <block name="invalidInputAction">
-            <script>
-                promptContext.gotInvalidInput();
-            </script>
-            <if cond="promptContext.hasExceededMaxInvalidInputs()">
-                <audio expr="promptContext.audioForInvalidInputDisconnect()"/>
-                <disconnect/>
-            <else/>
-                <audio expr="promptContext.audioForInvalidInputRetry()"/>
-                <goto nextitem="repeatOrGoToNextLessonSelection"/>
+    </form>
+    <form id="lessonPromptFinished">
+        <block>
+            <if cond="promptContext.getInputFromUser() == 2">
+                <script>
+                    callContext.lessonOrQuizFinished();
+                </script>
             </if>
+            <goto next="#controller"/>
         </block>
     </form>
 
@@ -154,9 +96,9 @@
             <prompt bargein="true">
                 <audio expr="callContext.currentInteractionMenu()"/>
             </prompt>
-<!--            <prompt bargein="true" cond="!callContext.isAtCourseRoot()">
+            <prompt bargein="true" cond="!callContext.isAtCourseRoot()">
                 <audio expr="promptContext.audioForOptionToGoToTopLevel()"/>
-            </prompt>-->
+            </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
                 <rule id="root">
                     <one-of>
