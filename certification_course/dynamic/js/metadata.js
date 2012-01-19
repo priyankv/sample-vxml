@@ -27,4 +27,5 @@ var metaData = {
          "flw.registration.say.district" : "/ananya/resources/audio/flwRegistration/say.district.wav",
          "flw.registration.record.stop" : "#",
          "flw.registration.beep" : "true",
+	 "addBookmarkUrl": "/ananya/bookmark/add",
     };
