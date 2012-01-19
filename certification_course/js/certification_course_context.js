@@ -24,13 +24,13 @@ var CertificationCourseContext = function(course, metadata) {
     this.scoreReportFinished = function() {
         this.hasFinishedLastLessonOfChapter = false;
         this.hasFinishedLastQuizOfChapter = false;
-        this.currentInteraction = this.currentInteraction.parent.siblingOnRight.children[0];
+        this.currentInteraction = this.currentInteraction.siblingOnRight.children[0];
     };
 
     this.restartChapter = function() {
         this.hasFinishedLastLessonOfChapter = false;
         this.hasFinishedLastQuizOfChapter = false;
-        this.currentInteraction = this.currentInteraction.parent.children[0];
+        this.currentInteraction = this.currentInteraction.children[0];
     };
 
     this.welcomeFinished = function() {
@@ -70,6 +70,7 @@ var CertificationCourseContext = function(course, metadata) {
         var isAtLastQuizOfChapter = lastChildOfMyParent == this.currentInteraction;
         if (isAtLastQuizOfChapter) {
             this.hasFinishedLastQuizOfChapter = true;
+            this.currentInteraction = this.currentInteraction.parent;
         }
         else {
             this.currentInteraction = this.currentInteraction.siblingOnRight;
