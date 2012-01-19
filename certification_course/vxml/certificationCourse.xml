@@ -25,10 +25,10 @@
             promptContext.resetCounts();
         </script>
         <block>
-            <if cond="callContext.hasFinishedChapter">
+            <if cond="callContext.chapterFinished()">
                 <goto next="#tellScore"/>
-            <elseif cond="callContext.isAtQuizHeader()"/>
-                <goto next="#quizHeader"/>
+            <!--<elseif cond="callContext.isAtQuizHeader()"/>-->
+                <!--<goto next="#quizHeader"/>-->
             <elseif cond="callContext.isAtCourseRoot()"/>
                 <goto next="#welcomeMessage"/>
             <elseif cond="callContext.isAtLesson()"/>
@@ -87,6 +87,30 @@
             <script>
                 callContext.quizHeaderFinished();
             </script>
+            <goto next="#controller"/>
+        </block>
+    </form>
+
+    <form id="tellScore">
+        <block>
+            <script>
+                promptContext.setupForReadingInputFromUser('scorePromptFinished', [1, 2]);
+            </script>
+            <goto next="#captureInputWithReprompt"/>
+        </block>
+    </form>
+
+    <form id="scorePromptFinished">
+        <block>
+            <if cond="promptContext.getInputFromUser() == 1">
+                <script>
+                    callContext.restartChapter();
+                </script>
+            <elseif cond="promptContext.getInputFromUser() == 2"/>
+                <script>
+                    callContext.scoreReportFinished();
+                </script>
+            </if>
             <goto next="#controller"/>
         </block>
     </form>

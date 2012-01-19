@@ -19,11 +19,26 @@ var CertificationCourseContext = function(course, metadata) {
 
     this.quizHeaderFinished = function() {
         this.hasFinishedLastLessonOfChapter = false;
-        this.currentInteraction = this.currentInteraction.parent.siblingOnRight.children[0]; //TODO: remove when quiz is part of call flow
+    };
+
+    this.scoreReportFinished = function() {
+        this.hasFinishedLastLessonOfChapter = false;
+        this.hasFinishedLastQuizOfChapter = false;
+        this.currentInteraction = this.currentInteraction.parent.siblingOnRight.children[0];
+    };
+
+    this.restartChapter = function() {
+        this.hasFinishedLastLessonOfChapter = false;
+        this.hasFinishedLastQuizOfChapter = false;
+        this.currentInteraction = this.currentInteraction.parent.children[0];
     };
 
     this.welcomeFinished = function() {
         this.currentInteraction  = this.course.children[0].children[0];
+    };
+
+    this.chapterFinished = function() {
+        return this.hasFinishedLastLessonOfChapter; //TODO: change to last quiz of chapter
     };
 
     this.isAtLesson = function() {
@@ -51,7 +66,6 @@ var CertificationCourseContext = function(course, metadata) {
         if(isAtLastLessonOfChapter){
             this.hasFinishedLastLessonOfChapter = true;
         }
-
         var lastChildOfMyParent =  this.currentInteraction.parent.children[this.currentInteraction.parent.children.length-1];
         var isAtLastQuizOfChapter = lastChildOfMyParent == this.currentInteraction;
         if (isAtLastQuizOfChapter) {
