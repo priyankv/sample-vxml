@@ -26,7 +26,8 @@
         </script>
         <block>
             <if cond="callContext.bookmark != null">
-                <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="callContext.bookmark session.connection.remote.uri"/>
+                <assign name="bookmark" expr="callContext.bookmark"/>
+                <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="bookmark session.connection.remote.uri"/>
                 <script>
                     callContext.bookmark = null;
                 </script>
