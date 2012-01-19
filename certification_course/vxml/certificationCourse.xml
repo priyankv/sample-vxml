@@ -25,6 +25,13 @@
             promptContext.resetCounts();
         </script>
         <block>
+            <if cond="callContext.bookmark != null">
+                <data srcexpr="metadata.addBookmarkUrl" method="post" namelist="callContext.bookmark"/>
+                <script>
+                    callContext.bookmark = null;
+                </script>
+            </if>
+
             <if cond="callContext.chapterFinished()">
                 <goto next="#tellScore"/>
             <!--<elseif cond="callContext.isAtQuizHeader()"/>-->
@@ -54,6 +61,7 @@
             <if cond="promptContext.getInputFromUser() == 2">
                 <script>
                     callContext.welcomeFinished();
+                    callContext.addAfterWelcomeMessageBookmark();
                 </script>
             </if>
             <goto next="#controller"/>
@@ -75,6 +83,7 @@
             <if cond="promptContext.getInputFromUser() == 2">
                 <script>
                     callContext.lessonOrQuizFinished();
+                    callContext.addAfterLessonBookmark();
                 </script>
             </if>
             <goto next="#controller"/>
