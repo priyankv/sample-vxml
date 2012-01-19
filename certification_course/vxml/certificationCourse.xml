@@ -26,7 +26,9 @@
         </script>
         <block>
             <if cond="callContext.bookmark != null">
-                Going to save <value expr="callContext.bookmark"/> to <value expr="metaData.addBookmarkUrl"/>.
+                Going to save <value expr="callContext.bookmark.type"/> to <value expr="metaData.addBookmarkUrl"/>.
+                Going to save <value expr="callContext.bookmark.chapterIndex"/> to <value expr="metaData.addBookmarkUrl"/>.
+                Going to save <value expr="callContext.bookmark.lessonIndex"/> to <value expr="metaData.addBookmarkUrl"/>.
                 <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="callContext.bookmark"/>
                 <script>
                     callContext.bookmark = null;
