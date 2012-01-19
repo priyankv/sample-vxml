@@ -26,8 +26,7 @@
         </script>
         <block>
             <if cond="callContext.bookmark != null">
-                Going to save <value expr="callContext.bookmark.lessonIndex"/> to <value expr="metaData.addBookmarkUrl"/>.
-                <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="callContext.bookmark"/>
+                <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="callContext.bookmark session.connection.remote.uri"/>
                 <script>
                     callContext.bookmark = null;
                 </script>
