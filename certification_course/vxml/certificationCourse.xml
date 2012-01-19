@@ -94,12 +94,12 @@
     <form id="tellScore">
         <block>
             <script>
+                callContext.currentInteraction = callContext.currentInteraction.parent; // TODO: Remove this, once quiz is done.
                 promptContext.setupForReadingInputFromUser('scorePromptFinished', [1, 2]);
             </script>
             <goto next="#captureInputWithReprompt"/>
         </block>
     </form>
-
     <form id="scorePromptFinished">
         <block>
             <if cond="promptContext.getInputFromUser() == 1">
