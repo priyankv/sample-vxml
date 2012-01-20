@@ -28,5 +28,5 @@ var metaData = {
          "flw.registration.record.stop" : "#",
          "flw.registration.beep" : "true",
 		 "addBookmarkUrl": "http://221.134.198.15/ananya",
-		 "shouldSaveBookmark" : "false",
+		 "shouldSaveBookmark" : "true",
     };
