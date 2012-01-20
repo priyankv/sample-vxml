@@ -14,6 +14,8 @@
         <![CDATA[
             var callContext = new CertificationCourseContext(courseData, metaData);
             var promptContext = new PromptContext(metaData);
+
+            callContext.navigateToBookmark(callerData.bookmark);
           ]]>
     </script>
 
@@ -26,11 +28,7 @@
             promptContext.resetCounts();
         </script>
         <block>
-            Bookmark type is <value expr="callerData.bookmark.type"/> .
-            Bookmark chapterIndex is <value expr="callerData.bookmark.chapterIndex"/>.
-            Bookmark lessonIndex is <value expr="callerData.bookmark.lessonIndex"/> .
-            Caller Registered <value expr="callerData.isRegistered"/> .
-            <if cond="callContext.bookmark != null">
+            <if cond="callContext.shouldSaveBookmark()">
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="bookmark session.connection.remote.uri"/>
                 <script>
