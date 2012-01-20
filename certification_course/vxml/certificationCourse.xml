@@ -28,6 +28,9 @@
             promptContext.resetCounts();
         </script>
         <block>
+		    Bookmark ytpe is <value expr="callerData.bookmark.type">.
+		    Bookmark chap is <value expr="callerData.bookmark.chapterIndex">.
+		    Bookmark lesson is <value expr="callerData.bookmark.lessonIndex">.
             <if cond="callContext.shouldSaveBookmark()">
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="bookmark session.connection.remote.uri"/>
