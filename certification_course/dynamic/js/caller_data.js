@@ -2,7 +2,7 @@ var callerData = {
    "isRegistered" : "true",
    "bookmark" : {
            "type" : "lesson",
-           "chapterIndex" : "0",
-           "lessonIndex" : "2"
+           "chapterIndex" : "1",
+           "lessonIndex" : "0"
           }
 };
