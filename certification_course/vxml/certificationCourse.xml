@@ -5,7 +5,7 @@
 
     <script src="../dynamic/js/metadata.js"/>
     <script src="../dynamic/js/certification_course_data.js"/>
-    <script srcexpr="'http://221.134.198.15/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri + '&something=somethingelse'"/>
+    <script srcexpr="'http://221.134.198.15/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri + '&amp;something=somethingelse'"/>
 
     <script src="../js/course.js"/>
     <script src="../js/certification_course_context.js"/>
