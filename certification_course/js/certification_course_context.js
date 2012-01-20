@@ -109,7 +109,7 @@ var CertificationCourseContext = function(course, metadata) {
     }
 
     this.shouldSaveBookmark = function() {
-        return bookmark != null && metadata.shouldSaveBookmark == "true";
+        return this.bookmark != null && this.metadata.shouldSaveBookmark == "true";
     };
 
     this.findContentByName = function(interactionToUse, contentName) {
