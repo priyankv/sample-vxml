@@ -45,7 +45,7 @@ var CertificationCourseContext = function(course, metadata) {
     };
 
     this.chapterFinished = function() {
-        return this.hasFinishedLastLessonOfChapter; //TODO: change to last quiz of chapter
+        return this.hasFinishedLastQuizOfChapter;
     };
 
     this.isAtLesson = function() {

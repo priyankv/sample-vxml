@@ -39,8 +39,8 @@
 
             <if cond="callContext.chapterFinished()">
                 <goto next="#tellScore"/>
-            <!--<elseif cond="callContext.isAtQuizHeader()"/>-->
-                <!--<goto next="#quizHeader"/>-->
+            <elseif cond="callContext.isAtQuizHeader()"/>
+                <goto next="#quizHeader"/>
             <elseif cond="callContext.isAtCourseRoot()"/>
                 <goto next="#welcomeMessage"/>
             <elseif cond="callContext.isAtLesson()"/>
