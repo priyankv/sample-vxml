@@ -117,7 +117,7 @@
 
     <form id="quizPromptFinished">
         <block>
-            <audio expr="callContext.evaluateAndPlayAnswerExplanation(promptContext.getInputFromUser())"/>
+            <audio expr="callContext.evaluateAndReturnAnswerExplanation(promptContext.getInputFromUser())"/>
             <script>
                 callContext.lessonOrQuizFinished();
             </script>
