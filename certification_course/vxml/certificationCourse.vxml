@@ -32,16 +32,16 @@
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <assign name="callerId" expr="session.connection.remote.uri"/>
                 <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="bookmark callerId"/>
-                  Quiz response length is: <value expr="callContext.quizResponses.length"/> .
-                <if cond="callContext.quizResponses.length &gt; 0"> //TODO: remove when Queue is built
-                    <assign name="quizResponse" expr="callContext.quizResponses[callContext.quizResponses.length-1]"/>
-                    <data srcexpr="metaData.updateScoreUrl" method="post" namelist="quizResponse"/>
-                </if>
 
                 <script>
                     callContext.bookmark = null;
                 </script>
             </if>
+                  Quiz response length is: <value expr="callContext.quizResponses.length"/> .
+                <if cond="callContext.quizResponses.length &gt; 0"> //TODO: remove when Queue is built
+                    <assign name="quizResponse" expr="callContext.quizResponses[callContext.quizResponses.length-1]"/>
+                    <data srcexpr="metaData.updateScoreUrl" method="post" namelist="quizResponse"/>
+                </if>
 
             <if cond="callContext.chapterFinished()">
                 <goto next="#tellScore"/>
