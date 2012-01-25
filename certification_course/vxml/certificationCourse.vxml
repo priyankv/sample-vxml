@@ -40,7 +40,8 @@
                   Quiz response length is: <value expr="callContext.quizResponses.length"/> .
                 <if cond="callContext.quizResponses.length &gt; 0"> //TODO: remove when Queue is built
                     <assign name="quizResponse" expr="callContext.quizResponses[callContext.quizResponses.length-1]"/>
-                    <data srcexpr="metaData.updateScoreUrl" method="post" namelist="quizResponse"/>
+                    Will try to post this: <value expr="quizResponse"/>.
+                    <data srcexpr="metaData.updateScoreUrl" method="post" namelist="callerId quizResponse"/>
                 </if>
 
             <if cond="callContext.chapterFinished()">
