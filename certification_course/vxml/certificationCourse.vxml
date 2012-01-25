@@ -32,6 +32,12 @@
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <assign name="callerId" expr="session.connection.remote.uri"/>
                 <data srcexpr="metaData.addBookmarkUrl" method="post" namelist="bookmark callerId"/>
+
+                <if cond="callContext.quizResponses != null"> //TODO: remove when Queue is built
+                    <assign name="quizResponse" expr="callContext.quizResponses[callContext.quizResponses.length-1]"/>
+                    <data srcexpr="metaData.updateScoreUrl" method="post" namelist="quizResponse"/>
+                </if>
+
                 <script>
                     callContext.bookmark = null;
                 </script>
@@ -114,7 +120,6 @@
             <goto next="#captureInputWithReprompt"/>
          </block>
     </form>
-
     <form id="quizPromptFinished">
         <block>
             <audio expr="callContext.evaluateAndReturnAnswerExplanation(promptContext.getInputFromUser())"/>
@@ -127,13 +132,22 @@
 
     <form id="tellScore">
         <block>
+            <!--<assign name="quizResponses" expr="callContext.quizResponses"/>
+            <assign name="callerId" expr="session.connection.remote.uri"/>
+            <data srcexpr="metaData.recordQuizResponsesUrl" method="post" namelist="quizResponses callerId"/>-->
+            <goto next="#captureInputWithReprompt"/>
+        </block>
+    </form>
+
+    <form id="endOfChapterMenu">
+        <block>
             <script>
-                promptContext.setupForReadingInputFromUser('scorePromptFinished', [1, 2]);
+                promptContext.setupForReadingInputFromUser('endOfChapterMenuPromptFinished', [1, 2]);
             </script>
             <goto next="#captureInputWithReprompt"/>
         </block>
     </form>
-    <form id="scorePromptFinished">
+    <form id="endOfChapterMenuPromptFinished">
         <block>
             <if cond="promptContext.getInputFromUser() == 1">
                 <script>

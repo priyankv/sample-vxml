@@ -5,7 +5,7 @@ var CertificationCourseContext = function(course, metadata) {
         this.currentInteraction = course;
         this.metadata = metadata;
         this.bookmark = null;
-
+        this.quizResponses = new Array();
         this.hasFinishedLastQuizOfChapter = false;
         this.hasFinishedLastLessonOfChapter = false;
     };
@@ -122,10 +122,21 @@ var CertificationCourseContext = function(course, metadata) {
 
     this.evaluateAndReturnAnswerExplanation = function(input) {
         if(this.currentInteraction.data.correctAnswer == input) {
+            this.quizResponses[this.quizResponses.length] = this.scoreReport(input, true);
             return this.findAudio(this.currentInteraction, "correct");
         }
+        this.quizResponses[this.quizResponses.length] = this.scoreReport(input,false);
         return this.findAudio(this.currentInteraction, "incorrect");
     };
+
+    this.scoreReport = function(response,result){
+        return {
+            "chapterIndex" : "" + this.currentInteraction.parent.positionIndex,
+            "questionIndex" : "" + this.currentInteraction.positionIndex,
+            "response" : response,
+            "result" : result
+        };
+    }
 
     this.findContentByName = function(interactionToUse, contentName) {
         var contents = interactionToUse.contents;
