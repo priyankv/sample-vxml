@@ -28,7 +28,9 @@
             promptContext.resetCounts();
         </script>
         <block>
+              <if cond="callerData.scoresByChapter != null">
                 Score Of Chapter 0 : <value expr="callerData.scoresByChapter[0]"/>.
+              </if>
             <if cond="callContext.shouldSaveBookmark()">
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <assign name="callerId" expr="session.connection.remote.uri"/>
