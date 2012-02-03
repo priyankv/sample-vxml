@@ -28,6 +28,6 @@ var metaData = {
          "flw.registration.record.stop" : "#",
          "flw.registration.beep" : "true",
 	 "addBookmarkUrl": "http://221.134.198.15/ananya/bookmark/add",
-	 "shouldSaveBookmark" : "true",
+	 "shouldSaveBookmark" : "false",
 	 "updateScoreUrl" : "http://221.134.198.15/ananya/score/add"
     };

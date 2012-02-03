@@ -28,9 +28,9 @@
             promptContext.resetCounts();
         </script>
         <block>
-            <block>
-                Score Of Chapter 0 : <value expr="callerData.scoresByChapter.0"/>.
-            </block>
+              <if cond="callerData.scoresByChapter != null">
+                Score Of Chapter 0 : <value expr="callerData.scoresByChapter[0]"/>.
+              </if>
             <if cond="callContext.shouldSaveBookmark()">
                 <assign name="bookmark" expr="callContext.bookmark"/>
                 <assign name="callerId" expr="session.connection.remote.uri"/>
@@ -40,6 +40,7 @@
                 </script>
             </if>
              <if cond="callContext.quizResponses.length > 0"> //TODO: remove when Queue is built
+                    
                     <assign name="quizResponse" expr="callContext.quizResponses[callContext.quizResponses.length-1]"/>
                     <data srcexpr="metaData.updateScoreUrl" method="post" namelist="callerId quizResponse"/>
              </if>
