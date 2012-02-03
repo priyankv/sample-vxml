@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xml:lang="en-US" root = "TOPLEVEL" mode="voice" >
-    <rule id="TOPLEVEL" scope="public">
-	<one-of>
-           <item> yes <tag> <![CDATA[  <F_1 "yes"> ]]>  </tag> </item>
-           <item> no <tag> <![CDATA[  <F_1 "no"> ]]>  </tag> </item>
-        </one-of>
-</rule>
+<grammar version="1.0" xml:lang="hi-IN" mode="voice" xmlns="http://www.w3.org/2001/06/grammar" root="ANANYA_S001_DISTRICTS" tag-format="semantics/1.0">
+	<rule id="ANANYA_S001_DISTRICTS" scope="public">
+		<one-of>
+			<item>STATE <tag> out.district = "S01D001"; </tag></item>
+			<item>STATION <tag> out.district = "S01D003"; </tag></item>
+			<item>STATUS <tag> out.district = "S01D003" ;</tag></item>
+			<item>STAND <tag> out.district = "S01D002"; </tag></item>
+		</one-of>
+	</rule>
 </grammar>
