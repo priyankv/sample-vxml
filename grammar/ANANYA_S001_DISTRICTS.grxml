@@ -2,10 +2,10 @@
 <grammar version="1.0" xml:lang="hi-IN" mode="voice" xmlns="http://www.w3.org/2001/06/grammar" root="ANANYA_S001_DISTRICTS" tag-format="semantics/1.0">
 	<rule id="ANANYA_S001_DISTRICTS" scope="public">
 		<one-of>
-			<item>STATE <tag> out.district = "S01D001"; </tag></item>
-			<item>STATION <tag> out.district = "S01D003"; </tag></item>
-			<item>STATUS <tag> out.district = "S01D003" ;</tag></item>
-			<item>STAND <tag> out.district = "S01D002"; </tag></item>
+			<item>A <tag> out.district = "S01D001"; </tag></item>
+			<item>B <tag> out.district = "S01D003"; </tag></item>
+			<item>C <tag> out.district = "S01D003" ;</tag></item>
+			<item>D <tag> out.district = "S01D002"; </tag></item>
 		</one-of>
 	</rule>
 </grammar>
