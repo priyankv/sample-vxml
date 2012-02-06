@@ -65,7 +65,7 @@ var RegisterController = function(metadata) {
     };
     
     this.playBackPrompt = function(field,record) {
-        if(this.isVoiceRecognised(field))
+        if(false)
             return "http://221.134.198.15/ananya/audio/register/0009_name.wav";
         else
            return record;
