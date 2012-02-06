@@ -63,6 +63,10 @@ var RegisterController = function(metadata) {
     this.playBack = function(record) {
         return metadata["audio.url"]  + metadata['location.audio.url']+ record + ".wav";
     };
+    
+    this.playBackPrompt = function(field,record) {
+        return this.isVoiceRecognised(field)? this.playBack(record) : record ;
+    };
 
     this.designation = function() {
         return records[0];
