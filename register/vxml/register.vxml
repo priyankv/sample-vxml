@@ -53,8 +53,9 @@
         </block>
         <record name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms" dtmfterm="true">
             <if cond="controller.isVoiceRecognised(field)">
+                <log expr="controller.getGrammar(field)"/>
                 <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
-                <else/>
+            <else/>
                 <grammar mode="dtmf" version="1.0" root="root">
                     <rule id="root" scope="public">
                         <one-of>
