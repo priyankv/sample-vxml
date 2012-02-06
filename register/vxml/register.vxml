@@ -102,7 +102,7 @@
            
             <filled>
                   <log expr="'I was in filled'"/>
-                <if cond="confirm">
+                <if cond="confirm=='1'">
                     <goto next="#record_form"/>
                 </if>
                     <script>
