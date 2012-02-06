@@ -52,8 +52,10 @@
         <block>
             <prompt bargein="false">
                 <audio expr="controller.playPrompt(field)"/>
+                <audio expr="http://221.134.198.15/ananya/audio/register/beep.wav"/>
             </prompt>
         </block>
+         
         <record name="record" type="x-wav" beep="false"  dtmfterm="true">
             <if cond="controller.isVoiceRecognised(field)">
                 <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
