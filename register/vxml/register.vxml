@@ -96,8 +96,11 @@
                 </script>
                 <goto next="#record_form"/>
             </noinput>
+            <block>
+                  field is <value expr="record"/>
+            </block>
             <filled>
-                  <log expr="'I was in no input'"/>
+                  <log expr="'I was in filled'"/>
                 <if cond="confirm">
                     <goto next="#record_form"/>
                     <else/>
