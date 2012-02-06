@@ -79,7 +79,7 @@
             <prompt bargein="false">
                 <audio expr="controller.playConfirmPrompt(field)"/>
            
-                <audio expr="record"/>
+               <audio expr="controller.playBackPrompt(field,record)"/>
            
                 <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
