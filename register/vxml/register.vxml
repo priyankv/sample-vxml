@@ -11,7 +11,7 @@
          ]]>
     </script>
 
-    <property name="timeout" value="20s"/>
+    <property name="timeout" value="6s"/>
     <property name="bargein" value="true"/>
 
     <form id="record_designation_form">
