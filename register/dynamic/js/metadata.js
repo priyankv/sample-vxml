@@ -27,6 +27,7 @@ var metaData  = {
 		"register.name.say" : "0009_name.wav",
 		"register.name.confirm" : "0010_name_pb.wav",
 		"register.name.rerecord" : "0011_name_repeat.wav",
+		"register.name.noinput" : "0009_name.wav",
 		
 		"register.district.say" : "0012_district.wav",
 		"register.district.confirm" : "0013_district_pb.wav",
