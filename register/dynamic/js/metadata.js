@@ -18,7 +18,7 @@ var metaData  = {
 		"certificate.audio.url" : "certificatecourse/",
 
 		
-		"grammar.url" : "http://221.134.198.15/ananya/grammar/",
+		"grammar.url" : "../../grammar/",
 		"grammar.title.district" : "ANANYA_DISTRICTS_S001",
 		"grammar.title.block" : "ANANYA_BLOCKS_",
 		"grammar.title.panchayat" : "ANANYA_VILLAGES_",
