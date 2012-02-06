@@ -23,10 +23,10 @@
             <option dtmf="2" value="ASHA"/>
             <option dtmf="3" value="ANGANWADI"/>
             <noinput>
-                <value expr="controller.playPrompt('designation')"/>
+                <audio expr="controller.playPrompt('designation')"/>
             </noinput>
             <nomatch>
-                <value expr="controller.playPrompt('designation')"/>
+                <audio expr="controller.playPrompt('designation')"/>
             </nomatch>
             <filled>
                 <script>
@@ -65,14 +65,14 @@
             </if>
             <noinput>
                 <prompt bargein="false">
-                    <value src="controller.playNoInputPrompt(field)"/>
+                    <audio expr="controller.playNoInputPrompt(field)"/>
                 </prompt>
             </noinput>
         </record>
 
         <field name="confirm" type="boolean">
             <prompt bargein="false">
-                <value expr="controller.playConfirmPrompt(field)"/>
+                <audio expr="controller.playConfirmPrompt(field)"/>
             </prompt>
             <if cond="controller.isVoiceRecognised(field)">
                 <audio expr="controller.playBack(record)"/>
@@ -80,7 +80,7 @@
                 <audio expr="record"/>
             </if>
             <prompt>
-                <value expr="controller.playRerecordPrompt(field)"/>
+                <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
                 <rule id="root" scope="public">
