@@ -55,7 +55,7 @@ var RegisterController = function(metadata) {
 
     this.getGrammar = function(field) {
         if (field == 'district')
-            return metadata["grammar.url"] + metadata["grammar.title.district."] + ".grxml";
+            return metadata["grammar.url"] + metadata["grammar.title.district"] + ".grxml";
         else
             return metadata["grammar.url"] + metadata["grammar.title." + field] + records[count - 1] + ".grxml";
     };
