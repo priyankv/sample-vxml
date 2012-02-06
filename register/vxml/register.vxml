@@ -97,12 +97,6 @@
                 </script>
                 <goto next="#record_form"/>
             </noinput>
-             <nomatch>
-                  <script>
-                        controller.capture(record);
-                    </script>
-                    <goto next="#record_form"/>
-              </nomatch>
            
             <filled>
                   <log expr="'I was in filled'"/>
