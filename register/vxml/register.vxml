@@ -38,6 +38,9 @@
     </form>
 
     <form id="record_form">
+         <block>
+                  field is <value expr="record"/>
+            </block>
         <block>
             <if cond="controller.allCaptured()">
                 <goto nextitem="submit_form"/>
@@ -96,9 +99,7 @@
                 </script>
                 <goto next="#record_form"/>
             </noinput>
-            <block>
-                  field is <value expr="record"/>
-            </block>
+           
             <filled>
                   <log expr="'I was in filled'"/>
                 <if cond="confirm">
