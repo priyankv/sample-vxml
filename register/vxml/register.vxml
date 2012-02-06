@@ -52,7 +52,7 @@
         <block>
             <prompt bargein="false">
                 <audio expr="controller.playPrompt(field)"/>
-                <audio expr="http://221.134.198.15/ananya/audio/register/beep.wav"/>
+                <audio src="http://221.134.198.15/ananya/audio/register/beep.wav"/>
             </prompt>
         </block>
          
