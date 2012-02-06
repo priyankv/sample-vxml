@@ -76,13 +76,9 @@
         <field name="confirm" type="boolean">
             <prompt bargein="false">
                 <audio expr="controller.playConfirmPrompt(field)"/>
-            </prompt>
-            <if cond="controller.isVoiceRecognised(field)">
-                <audio expr="controller.playBack(record)"/>
-                <else/>
+           
                 <audio expr="record"/>
-            </if>
-            <prompt>
+            
                 <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
