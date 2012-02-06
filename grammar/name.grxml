@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar mode="voice" version="1.0" root="root">
+<grammar mode="voice" version="1.0" root="root" type="text/gsl">
 	<rule id="root" scope="public">
 		
 	</rule>
