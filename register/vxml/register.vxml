@@ -90,7 +90,7 @@
                 </rule>
             </grammar>
             <noinput>
-              <log expr="'I was in no input'"/>
+              
                 <script>
                     controller.capture(record);
                 </script>
@@ -98,7 +98,7 @@
             </noinput>
            
             <filled>
-                  <log expr="'I was in filled'"/>
+                 
                 <if cond="confirm=='1'">
                     <goto next="#record_form"/>
                 </if>
