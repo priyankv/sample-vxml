@@ -104,12 +104,11 @@
                   <log expr="'I was in filled'"/>
                 <if cond="confirm">
                     <goto next="#record_form"/>
-                    <else/>
+                </if>
                     <script>
                         controller.capture(record);
                     </script>
                     <goto next="#record_form"/>
-                </if>
             </filled>
         </field>
         <block name="submit_form">
