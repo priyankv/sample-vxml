@@ -19,6 +19,7 @@ var metaData  = {
 
 		
 		"grammar.url" : "../../grammar/",
+		"grammar.title.name" : "name",
 		"grammar.title.district" : "ANANYA_DISTRICTS_S001",
 		"grammar.title.block" : "ANANYA_BLOCKS_",
 		"grammar.title.panchayat" : "ANANYA_VILLAGES_",
