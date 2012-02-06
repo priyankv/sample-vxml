@@ -65,9 +65,9 @@ var RegisterController = function(metadata) {
     };
     
     this.playBackPrompt = function(field,record) {
-        #if(this.isVoiceRecognised(field))
-         #   return this.playBack(record);
-        #else
+        //if(this.isVoiceRecognised(field))
+         //   return this.playBack(record);
+        //else
            return record;
     };
 
