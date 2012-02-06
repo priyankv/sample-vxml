@@ -38,9 +38,6 @@
     </form>
 
     <form id="record_form">
-         <block>
-                  field is <value expr="record"/>
-            </block>
         <block>
             <if cond="controller.allCaptured()">
                 <goto nextitem="submit_form"/>
@@ -90,15 +87,18 @@
                 </rule>
             </grammar>
             <noinput>
-              
                 <script>
                     controller.capture(record);
                 </script>
                 <goto next="#record_form"/>
             </noinput>
-           
+      		<nomatch>
+			      <script>
+                    controller.capture(record);
+                </script>
+                <goto next="#record_form"/>
+			</nomatch>
             <filled>
-                 
                 <if cond="confirm=='1'">
                     <goto next="#record_form"/>
                 </if>
