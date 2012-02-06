@@ -23,23 +23,26 @@ var metaData  = {
 		"grammar.title.block" : "ANANYA_BLOCKS_",
 		"grammar.title.panchayat" : "ANANYA_VILLAGES_",
 
-		"register.designation.say" : "008_designation.wav",
-		"register.name.say" : "009_name.wav",
-		"register.name.confirm" : "010_name_pb.wav",
-		"register.name.rerecord" : "011_name_repeat.wav",
-		"register.name.noinput" : "009_name.wav",
-		"register.block.say" : "015_block.wav",
-		"register.block.confirm" : "016_block_pb.wav",
-		"register.block.rerecord" : "017_block_repeat.wav",
-		"register.block.noinput" : "015_block.wav",
-		"register.district.say" : "012_district.wav",
-		"register.district.confirm" : "013_district_pb.wav",
-		"register.district.rerecord" : "014_district_repeat.wav",
-		"register.district.noinput" : "012_district.wav",
-		"register.panchayat.say" : "018_panchayat.wav",
-		"register.panchayat.confirm" : "019_panchayat_pb.wav",
-		"register.panchayat.rerecord" : "020_panchayat_repeat.wav",
-		"register.panchayat.noinput" : "018_panchayat.wav",
+		"register.designation.say" : "0008_designation.wav",
+		"register.name.say" : "0009_name.wav",
+		"register.name.confirm" : "0010_name_pb.wav",
+		"register.name.rerecord" : "0011_name_repeat.wav",
+		
+		"register.district.say" : "0012_district.wav",
+		"register.district.confirm" : "0013_district_pb.wav",
+		"register.district.rerecord" : "0014_district_repeat.wav",
+		
+		"register.block.say" : "0015_block.wav",
+		"register.block.confirm" : "0016_block_pb.wav",
+		"register.block.rerecord" : "0017_block_repeat.wav",
+	
+		"register.district.noinput" : "0012_district.wav",
+		
+		"register.panchayat.say" : "0018_panchayat.wav",
+		"register.panchayat.confirm" : "0019_panchayat_pb.wav",
+		"register.panchayat.rerecord" : "0020_panchayat_repeat.wav",
+		"register.panchayat.noinput" : "0018_panchayat.wav",
+		
 		"registration.beep.audio" : "beep.wav",
 		"register.complete" : "021_regdone.wav",
 
