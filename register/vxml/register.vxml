@@ -56,7 +56,7 @@
             </prompt>
         </block>
          
-        <record name="record" type="x-wav" beep="false"  dtmfterm="true">
+        <record name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
             <if cond="controller.isVoiceRecognised(field)">
                 <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
             <else/>
