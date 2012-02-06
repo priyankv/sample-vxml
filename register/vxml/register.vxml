@@ -7,7 +7,7 @@
     <script src="../js/register/controller.js"/>
     <script>
         <![CDATA[
-        var controller = new RegisterController();
+        var controller = new RegisterController(metaData);
          ]]>
     </script>
 
