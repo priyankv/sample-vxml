@@ -38,9 +38,7 @@
     </form>
 
     <form id="record_form">
-        
         <block>
-          
             <if cond="controller.allCaptured()">
                 <goto nextitem="submit_form"/>
             </if>
@@ -49,7 +47,6 @@
             var field = controller.nextField();
         </script>
         <block>
-             field is <value expr="field"/>
             <prompt bargein="false">
                 <audio expr="controller.playPrompt(field)"/>
                 <audio src="http://221.134.198.15/ananya/audio/register/beep.wav"/>
