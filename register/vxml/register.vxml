@@ -64,11 +64,12 @@
              nameRecord is <value expr="nameRecord"/>
              fieldRecord is <value expr="fieldRecord"/>
            </block>
-           <script>
-             var record = nameRecord != undefined ? nameRecord : fieldRecord;
-           </script>
+          
            <field name="confirm" type="boolean">
-               <prompt bargein="false">
+              <script>
+                  var record = nameRecord != undefined ? nameRecord : fieldRecord;
+              </script>
+              <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
 
                    <audio expr="controller.playBackPrompt(field,record)"/>
