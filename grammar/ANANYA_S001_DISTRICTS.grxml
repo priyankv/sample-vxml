@@ -3,7 +3,7 @@
 	<rule id="ANANYA_S001_DISTRICTS" scope="public">
 		<one-of>
 			<item>NAME <tag> out.fieldRecord= "S01D001"; </tag></item>
-			<item>DISTRICT <tag> out.fieldRecord= "S01D003"; </tag></item>
+			<item>NO <tag> out.fieldRecord= "S01D003"; </tag></item>
 			<item>C <tag> out.fieldRecord= "S01D003" ;</tag></item>
 			<item>D <tag> out.fieldRecord= "S01D002"; </tag></item>
 		</one-of>
