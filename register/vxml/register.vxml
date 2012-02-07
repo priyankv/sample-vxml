@@ -15,6 +15,7 @@
     <property name="bargein" value="true"/>
 
     <form id="record_designation_form">
+        <block><log expr="'LOG_MTK : Playing prompt for designation'"/></block>
         <field name="designation">
             <prompt>
                 <audio expr="controller.playPrompt('designation')"/>
@@ -23,12 +24,16 @@
             <option dtmf="2" value="ASHA"/>
             <option dtmf="3" value="ANGANWADI"/>
             <noinput>
+                <log expr="'LOG_MTK : No input for designation '"/>
                 <value expr="controller.playPrompt('designation')"/>
             </noinput>
             <nomatch>
+                <log expr="'LOG_MTK : No match for designation '"/>
                 <value expr="controller.playPrompt('designation')"/>
             </nomatch>
             <filled>
+                <log expr="'LOG_MTK : Filled designation '"/>
+                <log expr="desigation" />
                 <script>
                     controller.capture(designation);
                 </script>
@@ -39,6 +44,7 @@
 
     <form id="record_form">
         <block>
+           <log expr="'LOG_MTK : Checking whether all have been captured'" />
            <if cond="controller.allCaptured()">
                <goto nextitem="submit_form"/>
            </if>
@@ -156,6 +162,10 @@
             <nomatch>
                   <prompt> no match count two is successful. </prompt>
             </nomatch>
+            <filled>
+                  <log expr="'LOG_MTK : Filled for field record.'" />
+                  <log expr="fieldRecord" />
+            </filled>
        </field>
        
     </form>
