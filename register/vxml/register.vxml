@@ -46,6 +46,9 @@
            <script>
                var field = controller.nextField();
            </script>
+            <block>
+                  block is <value expr="field" />
+            </block>
            <block>
                <prompt bargein="false">
                    <audio expr="controller.playPrompt(field)"/>
@@ -142,9 +145,13 @@
 
            <noinput>
                <prompt bargein="false">
+                  inside noinput
                    <audio expr="controller.playNoInputPrompt(field)"/>
                </prompt>
            </noinput>
+            <nomatch>
+                  <prompt> no match count two is successful. </prompt>
+            </nomatch>
 
        </field>
        
