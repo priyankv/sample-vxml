@@ -131,7 +131,7 @@
       </record>
         
         
-        <field name="fieldRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+        <field name="fieldRecord">
 
                <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
 
