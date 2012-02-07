@@ -60,17 +60,11 @@
                  <goto nextitem="fieldRecord"/>
              </if>
            </block>
-           <!--<block>
-             nameRecord is <value expr="nameRecord"/>
-             fieldRecord is <value expr="fieldRecord"/>
-           </block>-->
-           
           
            <field name="confirm" type="boolean">
               <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
-                   <!--<audio expr="controller.playBackPrompt(field, ((nameRecord != undefined) ? nameRecord : fieldRecord))"/>-->
-                   <audio expr="controller.playBackPrompt(field,record)"/>
+                   <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
                <grammar mode="dtmf" version="1.0" root="root">
@@ -82,13 +76,13 @@
                </grammar>
                <noinput>
                    <script>
-                       controller.capture(record);
+                       controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                    </script>
                    <goto next="#record_form"/>
                </noinput>
                 <nomatch>
                     <script>
-                       controller.capture(record);
+                       controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                    </script>
                    <goto next="#record_form"/>
                 </nomatch>
@@ -97,7 +91,7 @@
                        <goto next="#record_form"/>
                    </if>
                        <script>
-                           controller.capture(record);
+                           controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                        </script>
                        <goto next="#record_form"/>
                </filled>
@@ -131,12 +125,6 @@
                   <audio expr="controller.playNoInputPrompt(field)"/>
              </prompt>
          </noinput>
-
-            <filled>
-                  <log expr="nameRecord"/>
-                  <prompt> your recording was <value expr="nameRecord"/> </prompt>
-                  <assign name="record" expr="nameRecord"/>
-            </filled>
       </record>
         
         
@@ -157,12 +145,6 @@
                    <audio expr="controller.playNoInputPrompt(field)"/>
                </prompt>
            </noinput>
-
-            <filled>
-                  <log expr="fieldRecord"/>
-                  <prompt> your recording was <value expr="fieldRecord"/> </prompt>
-                  <assign name="record" expr="fieldRecord"/>
-            </filled>
 
        </field>
        
