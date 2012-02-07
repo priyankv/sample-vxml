@@ -52,6 +52,7 @@
             <prompt bargein="false">
                 <audio expr="controller.playPrompt(field)"/>
                 <audio src="http://221.134.198.15/ananya/audio/register/beep.wav"/>
+                grammar is <value expr="controller.getGrammar(field)"/>
             </prompt>
         </block>
          
