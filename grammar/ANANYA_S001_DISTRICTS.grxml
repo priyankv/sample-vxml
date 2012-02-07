@@ -2,10 +2,10 @@
 <grammar version="1.0" xml:lang="hi-IN" mode="voice" xmlns="http://www.w3.org/2001/06/grammar" root="ANANYA_S001_DISTRICTS" tag-format="semantics/1.0">
 	<rule id="ANANYA_S001_DISTRICTS" scope="public">
 		<one-of>
-			<item>NAME <tag> out.fieldRecord= "S01D001"; </tag></item>
-			<item>DISTRICT <tag> out.fieldRecord= "S01D003"; </tag></item>
-			<item>C <tag> out.fieldRecord= "S01D003" ;</tag></item>
-			<item>D <tag> out.fieldRecord= "S01D002"; </tag></item>
+			<item>NAME <tag> out.name= "S01D001"; </tag></item>
+			<item>DISTRICT <tag> out.name= "S01D003"; </tag></item>
+			<item>C <tag> out.name= "S01D003" ;</tag></item>
+			<item>D <tag> out.name= "S01D002"; </tag></item>
 		</one-of>
 	</rule>
 </grammar>
