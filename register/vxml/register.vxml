@@ -164,7 +164,7 @@
             </nomatch>
             <filled>
                   <log expr="'LOG_MTK : Filled for field record.'" />
-                  <log expr="fieldRecord" />
+                  <log expr="'LOG_MTK : ' + fieldRecord" />
             </filled>
        </field>
        
