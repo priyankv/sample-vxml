@@ -111,8 +111,8 @@
                   namelist="session.connection.remote.uri designation district block panchayat"/>
             <goto next="controller.nextFlow(session.connection.local.uri)"/>
         </block>
-        <block name="nameRecord">
-            <record name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+       
+            <record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
 
                    <grammar mode="dtmf" version="1.0" root="root">
                        <rule id="root" scope="public">
@@ -128,9 +128,9 @@
                    </prompt>
                </noinput>
            </record>
-        </block>
-        <block name="fieldRecord">
-        <field name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+        
+        
+        <field name="fieldRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
 
                <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
 
@@ -148,6 +148,6 @@
                </prompt>
            </noinput>
        </field>
-        </block>
+       
     </form>
 </vxml>
