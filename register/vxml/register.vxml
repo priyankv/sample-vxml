@@ -60,7 +60,13 @@
                  <goto nextitem="fieldRecord"/>
              </if>
            </block>
-
+           <block>
+             nameRecord is <value expr="nameRecord"/>
+             fieldRecord is <value expr="fieldRecord"/>
+           </block>
+           <script>
+             var record = nameRecord != undefined ? nameRecord : fieldRecord;
+           </script>
            <field name="confirm" type="boolean">
                <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
