@@ -54,7 +54,7 @@
             </prompt>
         </block>
          
-        <record name="field" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+        <record name="district" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
            
                 <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
            
@@ -77,7 +77,7 @@
             <prompt bargein="false">
                 <audio expr="controller.playConfirmPrompt(field)"/>
                 
-                <audio expr="controller.playBackPrompt(field,record)"/>
+                <audio expr="controller.playBackPrompt(field,district)"/>
                 <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
@@ -89,13 +89,13 @@
             </grammar>
             <noinput>
                 <script>
-                    controller.capture(record);
+                    controller.capture(district);
                 </script>
                 <goto next="#record_form"/>
             </noinput>
 	    <nomatch>
 		<script>
-                    controller.capture(record);
+                    controller.capture(district);
                 </script>
                 <goto next="#record_form"/>
 	    </nomatch>
@@ -104,7 +104,7 @@
                     <goto next="#record_form"/>
                 </if>
                     <script>
-                        controller.capture(record);
+                        controller.capture(district);
                     </script>
                     <goto next="#record_form"/>
             </filled>
