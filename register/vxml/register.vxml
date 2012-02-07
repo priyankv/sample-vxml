@@ -135,9 +135,7 @@
             <filled>
                   <log expr="nameRecord"/>
                   <prompt> your recording was <value expr="nameRecord"/> </prompt>
-                  <script>
-                        var record = nameRecord;
-                  </script>
+                  <assign name="record" expr="nameRecord"/>
             </filled>
       </record>
         
@@ -163,9 +161,7 @@
             <filled>
                   <log expr="fieldRecord"/>
                   <prompt> your recording was <value expr="fieldRecord"/> </prompt>
-                  <script>
-                        var record = fieldRecord;
-                  </script>
+                  <assign name="record" expr="fieldRecord"/>
             </filled>
 
        </field>
