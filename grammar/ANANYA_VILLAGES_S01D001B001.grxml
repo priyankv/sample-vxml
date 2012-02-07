@@ -2,17 +2,7 @@
 <grammar version="1.0" xml:lang="hi-IN" mode="voice" xmlns="http://www.w3.org/2001/06/grammar" root="ANANYA_VILLAGES_S01D001B001" tag-format="semantics/1.0">
 	<rule id="ANANYA_VILLAGES_S01D001B001" scope="public">
 		<one-of>
-			<item>धना निसारपुरा <tag> out.Village = &quot;S01D001B001V004&quot; </tag></item>
-			<item>धना निसार पुरा <tag> out.Village = &quot;S01D001B001V004&quot; </tag></item>
-			<item>धना निशारपुरा <tag> out.Village = &quot;S01D001B001V004&quot; </tag></item>
-			<item>धना निसारपूरा <tag> out.Village = &quot;S01D001B001V004&quot; </tag></item>			
-			<item>भरतपुरा <tag> out.Village = &quot;S01D001B001V003&quot;</tag></item>
-			<item>भरतपुर <tag> out.Village = &quot;S01D001B001V003&quot;</tag></item>
-			<item>भरतपूरा <tag> out.Village = &quot;S01D001B001V003&quot;</tag></item>
-			<item>भरत पुरा <tag> out.Village = &quot;S01D001B001V003&quot;</tag></item>			
-			<item>कब <tag> out.Village = &quot;S01D001B001V005&quot; </tag></item>
-			<item>सीही <tag> out.Village = &quot;S01D001B001V011&quot; </tag></item>
-		m>
+			<item>NO <tag> out.fieldRecord = "S01D001B001V004"; </tag></item>
 		</one-of>
 	</rule>
 </grammar>
