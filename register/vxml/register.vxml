@@ -33,7 +33,7 @@
             </nomatch>
             <filled>
                 <log expr="'LOG_MTK : Filled designation '"/>
-                <log expr="desigation" />
+                <log expr="designation" />
                 <script>
                     controller.capture(designation);
                 </script>
