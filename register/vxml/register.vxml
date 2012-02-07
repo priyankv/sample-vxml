@@ -8,6 +8,8 @@
     <script>
         <![CDATA[
         var controller = new RegisterController(metaData);
+        var nameRecord;
+        var fieldRecord;
          ]]>
     </script>
 
@@ -60,19 +62,19 @@
                  <goto nextitem="fieldRecord"/>
              </if>
            </block>
-           <block>
+           <!--<block>
              nameRecord is <value expr="nameRecord"/>
              fieldRecord is <value expr="fieldRecord"/>
-           </block>
+           </block>-->
+            <block>
+             record is <value expr="record"/>
+            </block>
           
            <field name="confirm" type="boolean">
-              <script>
-                  var record = nameRecord != undefined ? nameRecord : fieldRecord;
-              </script>
               <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
-                   <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
-                   <!--<audio expr="controller.playBackPrompt(field,record)"/>-->
+                   <!--<audio expr="controller.playBackPrompt(field, ((nameRecord != undefined) ? nameRecord : fieldRecord))"/>-->
+                   <audio expr="controller.playBackPrompt(field,record)"/>
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
                <grammar mode="dtmf" version="1.0" root="root">
@@ -119,22 +121,29 @@
             <goto next="controller.nextFlow(session.connection.local.uri)"/>
         </block>
        
-            <record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+      <record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+            <grammar mode="dtmf" version="1.0" root="root">
+                  <rule id="root" scope="public">
+                        <one-of>
+                         <item>1</item>
+                        </one-of>
+                  </rule>
+            </grammar>
 
-                   <grammar mode="dtmf" version="1.0" root="root">
-                       <rule id="root" scope="public">
-                           <one-of>
-                               <item>1</item>
-                           </one-of>
-                       </rule>
-                   </grammar>
+         <noinput>
+             <prompt bargein="false">
+                  <audio expr="controller.playNoInputPrompt(field)"/>
+             </prompt>
+         </noinput>
 
-               <noinput>
-                   <prompt bargein="false">
-                       <audio expr="controller.playNoInputPrompt(field)"/>
-                   </prompt>
-               </noinput>
-           </record>
+            <filled>
+                  <log expr="fieldRecord"/>
+                  <prompt> your recording was <value expr="fieldRecord"/> </prompt>
+                  <script>
+                        var record = nameRecord;
+                  </script>
+            </filled>
+      </record>
         
         
         <field name="fieldRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
@@ -154,6 +163,15 @@
                    <audio expr="controller.playNoInputPrompt(field)"/>
                </prompt>
            </noinput>
+
+            <filled>
+                  <log expr="fieldRecord"/>
+                  <prompt> your recording was <value expr="fieldRecord"/> </prompt>
+                  <script>
+                        var record = fieldRecord;
+                  </script>
+            </filled>
+
        </field>
        
     </form>
