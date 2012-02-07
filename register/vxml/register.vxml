@@ -56,7 +56,7 @@
          
         <block>
           <if cond="field=='name'">
-             <goto expritem="record"/>
+             <goto nextitem="record"/>
           </if>
         </block>
 
