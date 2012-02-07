@@ -152,10 +152,6 @@
             <nomatch>
                   <prompt> no match count two is successful. </prompt>
             </nomatch>
-            <filled>
-                  <prompt> value recognized is <value expr="fieldRecord" /> </prompt>
-            </filled>
-
        </field>
        
     </form>
