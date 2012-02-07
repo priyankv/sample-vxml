@@ -8,8 +8,6 @@
     <script>
         <![CDATA[
         var controller = new RegisterController(metaData);
-        var nameRecord;
-        var fieldRecord;
          ]]>
     </script>
 
@@ -66,9 +64,7 @@
              nameRecord is <value expr="nameRecord"/>
              fieldRecord is <value expr="fieldRecord"/>
            </block>-->
-            <block>
-             record is <value expr="record"/>
-            </block>
+           
           
            <field name="confirm" type="boolean">
               <prompt bargein="false">
@@ -137,8 +133,8 @@
          </noinput>
 
             <filled>
-                  <log expr="fieldRecord"/>
-                  <prompt> your recording was <value expr="fieldRecord"/> </prompt>
+                  <log expr="nameRecord"/>
+                  <prompt> your recording was <value expr="nameRecord"/> </prompt>
                   <script>
                         var record = nameRecord;
                   </script>
