@@ -114,7 +114,7 @@
             <goto next="controller.nextFlow(session.connection.local.uri)"/>
         </block>
     </form>
-   <form name="recordName">
+   <form id="recordName">
      <record name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
            
                 <grammar mode="dtmf" version="1.0" root="root">
@@ -133,7 +133,7 @@
         </record>
    </form>
 
-      <form name="recordFields">
+      <form id="recordFields">
           <field name="nonRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
            
                 <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
