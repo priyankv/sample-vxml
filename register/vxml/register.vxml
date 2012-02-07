@@ -40,7 +40,6 @@
     <form id="record_form">
         
         <block>
-           field is <value expr="record"/>
             <if cond="controller.allCaptured()">
                 <goto nextitem="submit_form"/>
             </if>
