@@ -71,8 +71,8 @@
               </script>
               <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
-
-                   <audio expr="controller.playBackPrompt(field,record)"/>
+                   <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
+                   <!--<audio expr="controller.playBackPrompt(field,record)"/>-->
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
                <grammar mode="dtmf" version="1.0" root="root">
