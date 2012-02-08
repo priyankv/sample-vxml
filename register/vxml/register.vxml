@@ -11,6 +11,7 @@
         <![CDATA[
         var controller = new RegisterController(metaData);
         var promptContext = new PromptContext(metaData);
+	var field, nameRecord, fieldRecord;
          ]]>
     </script>
 
