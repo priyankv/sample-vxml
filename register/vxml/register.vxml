@@ -141,6 +141,7 @@
                      <prompt bargein="false">
                           <audio expr="controller.playNoInputPrompt(field)"/>
                      </prompt>
+                    <goto nextitem="fieldRecord" />
                  </if>
             </noinput>
         </record>
@@ -171,6 +172,7 @@
                    <prompt bargein="false">
                        <audio expr="controller.playNoInputPrompt(field)"/>
                    </prompt>
+                    <goto nextitem="fieldRecord" />
                </if>
            </noinput>
             <nomatch>
@@ -186,6 +188,7 @@
                    <prompt bargein="false">
                        <audio expr="controller.playNoInputPrompt(field)"/>
                    </prompt>
+                    <goto nextitem="fieldRecord" />
                </if>
             </nomatch>
        </field>
