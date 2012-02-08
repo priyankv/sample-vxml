@@ -88,21 +88,25 @@
                    <script>
                        controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                    </script>
+      			   <clear/>
                    <goto next="#record_form"/>
                </noinput>
                 <nomatch>
                     <script>
                        controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                    </script>
+				   <clear/>
                    <goto next="#record_form"/>
                 </nomatch>
                <filled>
                    <if cond="confirm=='1'">
+						<clear/>
                        <goto next="#record_form"/>
                    </if>
                        <script>
                            controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
                        </script>
+					   <clear/>
                        <goto next="#record_form"/>
                </filled>
            </field>
