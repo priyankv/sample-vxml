@@ -72,14 +72,11 @@
           
            <field name="confirm" type="boolean">
               <prompt bargein="false">
+                   Playback is <value expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))" />
                    <audio expr="controller.playConfirmPrompt(field)"/>
                    <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
-               <block>
-                  <log expr="'motech pulkit'"/>
-                  <log expr="fieldConfirm"/>
-               </block>
                <grammar mode="dtmf" version="1.0" root="root">
                    <rule id="root" scope="public">
                        <one-of>
