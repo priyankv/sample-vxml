@@ -47,7 +47,7 @@
 
         <block>
            <if cond="controller.allCaptured()">
-               <goto nextitem="submit_form"/>
+               <goto next="#submit"/>
            </if>
         </block>
         <script>
@@ -68,57 +68,6 @@
 			 <goto nextitem="fieldRecord"/>
 			</if>
        </block>
-          
-       <field name="confirm" type="boolean">
-			<prompt bargein="false">
-               <audio expr="controller.playConfirmPrompt(field)"/>
-               <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
-               <audio expr="controller.playRerecordPrompt(field)"/>
-			</prompt>
-			<grammar mode="dtmf" version="1.0" root="root">
-			   <rule id="root" scope="public">
-				   <one-of>
-					   <item>1</item>
-				   </one-of>
-			   </rule>
-			</grammar>
-			<noinput>
-			   <script>
-				   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
-			   </script>
-			   <goto next="#record_form"/>
-			</noinput>
-            <nomatch>
-                <script>
-                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
-               </script>
-               <goto next="#record_form"/>
-            </nomatch>
-           <filled>
-               <if cond="confirm=='1'">
-                   <goto next="#record_form"/>
-               </if>
-               <script>
-                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
-               </script>
-               <goto next="#record_form"/>
-           </filled>
-       </field>
-	   
-        <block name="submit_form">
-            <script>
-                var name = controller.name();
-                var designation = controller.designation();
-                var district = controller.district();
-                var block = controller.block();
-                var panchayat = controller.panchayat();
-            </script>
-            <data srcexpr="controller.submitNameUrl()" enctype="multipart/form-data" method="post"
-                  namelist="session.connection.remote.uri name"/>
-            <data srcexpr="controller.submitUrl()" method="post"
-                  namelist="session.connection.remote.uri designation district block panchayat"/>
-            <goto next="controller.nextFlow(session.connection.local.uri)"/>
-        </block>
        
 		<record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
 			<grammar mode="dtmf" version="1.0" root="root">
@@ -144,6 +93,9 @@
 					 </prompt>
 				 </if>
 			</noinput>
+            <filled>
+                <goto next="#confirm_form" />
+            </filled>
 		</record>
         
         
@@ -189,7 +141,65 @@
                </prompt>
                </if>
             </nomatch>
+            <filled>
+                <goto next="#confirm_form" />
+            </filled>
        </field>
-       
     </form>
+
+    <form id="confirm_form">
+       <field name="confirm" type="boolean">
+    		<prompt bargein="false">
+               <audio expr="controller.playConfirmPrompt(field)"/>
+               <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
+               <audio expr="controller.playRerecordPrompt(field)"/>
+			</prompt>
+			<grammar mode="dtmf" version="1.0" root="root">
+			   <rule id="root" scope="public">
+				   <one-of>
+					   <item>1</item>
+				   </one-of>
+			   </rule>
+			</grammar>
+			<noinput>
+			   <script>
+				   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+			   </script>
+			   <goto next="#record_form"/>
+			</noinput>
+            <nomatch>
+                <script>
+                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+               </script>
+               <goto next="#record_form"/>
+            </nomatch>
+           <filled>
+               <if cond="confirm=='1'">
+                   <goto next="#record_form"/>
+               </if>
+               <script>
+                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+               </script>
+               <goto next="#record_form"/>
+           </filled>
+       </field>
+    </form>
+
+    <form id="submit">
+        <block name="submit_form">
+            <script>
+                var name = controller.name();
+                var designation = controller.designation();
+                var district = controller.district();
+                var block = controller.block();
+                var panchayat = controller.panchayat();
+            </script>
+            <data srcexpr="controller.submitNameUrl()" enctype="multipart/form-data" method="post"
+                  namelist="session.connection.remote.uri name"/>
+            <data srcexpr="controller.submitUrl()" method="post"
+                  namelist="session.connection.remote.uri designation district block panchayat"/>
+            <goto next="controller.nextFlow(session.connection.local.uri)"/>
+        </block>
+    </form>
+
 </vxml>
