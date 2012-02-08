@@ -72,8 +72,8 @@
           
            <field name="confirm" type="boolean">
               <prompt bargein="false">
-                   Playback is <value expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))" />
                    <audio expr="controller.playConfirmPrompt(field)"/>
+                   Playback is <value expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))" />
                    <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
@@ -157,7 +157,10 @@
                </prompt>
            </noinput>
             <nomatch>
-                  <prompt> no match count two is successful. </prompt>
+               <prompt bargein="false">
+                  inside nomatch
+                   <audio expr="controller.playNoInputPrompt(field)"/>
+               </prompt>
             </nomatch>
             <filled>
                   <log expr="'LOG_MTK : Filled for field record.'" />
