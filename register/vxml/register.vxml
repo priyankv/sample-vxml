@@ -129,12 +129,15 @@
             </grammar>
 
             <noinput>
-                <script>
+              <log expr="'LOG_MTK : No input ' + promptContext.getNoInputCount()" />
+              <script>
                     promptContext.gotNoInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxNoInputs()">
+                    <log expr="'LOG_MTK : noinput disconnecting'" />
                     <disconnect/>
                 <else/>
+                    <log expr="'LOG_MTK : noinput prompting for ' + field + 'again'"/>
                      <prompt bargein="false">
                           <audio expr="controller.playNoInputPrompt(field)"/>
                      </prompt>
@@ -156,27 +159,33 @@
             </grammar>
 
            <noinput>
+                <log expr="'LOG_MTK : No input ' + promptContext.getNoInputCount()" />
                 <script>
                     promptContext.gotNoInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxNoInputs()">
+                    <log expr="'LOG_MTK : noinput disconnecting'" />
                     <disconnect/>
                 <else/>
+                    <log expr="'LOG_MTK : noinput prompting for ' + field + 'again'"/>
                    <prompt bargein="false">
                        <audio expr="controller.playNoInputPrompt(field)"/>
                    </prompt>
                </if>
            </noinput>
             <nomatch>
+                <log expr="'LOG_MTK : No match ' + promptContext.getInvalidInputCount()" />
                  <script>
                     promptContext.gotInvalidInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxInvalidInputs()">
+                    <log expr="'LOG_MTK : nomatch disconnecting'" />
                     <disconnect/>
                 <else/>
-               <prompt bargein="false">
-                   <audio expr="controller.playNoInputPrompt(field)"/>
-               </prompt>
+                    <log expr="'LOG_MTK : nomatch prompting for ' + field + 'again'"/>
+                   <prompt bargein="false">
+                       <audio expr="controller.playNoInputPrompt(field)"/>
+                   </prompt>
                </if>
             </nomatch>
        </field>
