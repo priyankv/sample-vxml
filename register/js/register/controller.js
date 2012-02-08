@@ -21,6 +21,10 @@ var RegisterController = function(metadata) {
     this.playPrompt = function(field) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".say"];
     };
+    
+    this.playBeep = function(field) {
+        return metadata["audio.url"] +metadata['register.audio.url']+ metadata['registration.beep.audio'] ;
+    };
 
     this.playConfirmPrompt = function(field) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".confirm"];
