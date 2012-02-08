@@ -34,7 +34,7 @@ var RegisterController = function(metadata) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".rerecord"];
     };
 
-    this.isVoiceRecognised = function(field) {
+   this.isNotVoiceRecognised = function(field) {
         return field != "name" || field != "designation";
     };
 
@@ -66,11 +66,11 @@ var RegisterController = function(metadata) {
         return metadata["audio.url"]  + metadata['location.audio.url']+ record + ".wav";
     };
     
-    this.playBackPrompt = function(field,record) {
-        if(false)
-            return "http://221.134.198.15/ananya/audio/register/0009_name.wav";
+     this.playBackPrompt = function(field,record) {
+        if(this.isNotVoiceRecognised(field))
+            return record;
         else
-           return record;
+           return this.playBack(record);
     };
 
     this.designation = function() {

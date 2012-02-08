@@ -11,10 +11,11 @@
          ]]>
     </script>
 
-    <property name="timeout" value="6s"/>
+    <property name="timeout" value="4s"/>
     <property name="bargein" value="true"/>
 
     <form id="record_designation_form">
+        <block><log expr="'LOG_MTK : Playing prompt for designation'"/></block>
         <field name="designation">
             <prompt>
                 <audio expr="controller.playPrompt('designation')"/>
@@ -23,12 +24,16 @@
             <option dtmf="2" value="ASHA"/>
             <option dtmf="3" value="ANGANWADI"/>
             <noinput>
-                <audio expr="controller.playPrompt('designation')"/>
+                <log expr="'LOG_MTK : No input for designation '"/>
+                <value expr="controller.playPrompt('designation')"/>
             </noinput>
             <nomatch>
-                <audio expr="controller.playPrompt('designation')"/>
+                <log expr="'LOG_MTK : No match for designation '"/>
+                <value expr="controller.playPrompt('designation')"/>
             </nomatch>
             <filled>
+                <log expr="'LOG_MTK : Filled designation '"/>
+                <log expr="designation" />
                 <script>
                     controller.capture(designation);
                 </script>
@@ -38,78 +43,69 @@
     </form>
 
     <form id="record_form">
-        
         <block>
-           field is <value expr="record"/>
-            <if cond="controller.allCaptured()">
-                <goto nextitem="submit_form"/>
-            </if>
+           <log expr="'LOG_MTK : Checking whether all have been captured'" />
+           <if cond="controller.allCaptured()">
+               <goto nextitem="submit_form"/>
+           </if>
         </block>
-        <script>
-            var field = controller.nextField();
-        </script>
-        <block>
-            <prompt bargein="false">
-                <audio expr="controller.playPrompt(field)"/>
-                <audio src="http://221.134.198.15/ananya/audio/register/beep.wav"/>
-            </prompt>
-        </block>
-         
-        <record name="record" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
-           
-                <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
-           
-                <grammar mode="dtmf" version="1.0" root="root">
-                    <rule id="root" scope="public">
-                        <one-of>
-                            <item>1</item>
-                        </one-of>
-                    </rule>
-                </grammar>
-           
-            <noinput>
-                <prompt bargein="false">
-                    <audio expr="controller.playNoInputPrompt(field)"/>
-                </prompt>
-            </noinput>
-        </record>
+           <script>
+               var field = controller.nextField();
+           </script>
+            <block>
+                  block is <value expr="field" />
+            </block>
+           <block>
+               <prompt bargein="false">
+                   <audio expr="controller.playPrompt(field)"/>
+                   <audio src="http://221.134.198.15/ananya/audio/register/beep.wav"/>
+               </prompt>
+           </block>
 
-        <field name="confirm" type="boolean">
-            <prompt bargein="false">
-                <audio expr="controller.playConfirmPrompt(field)"/>
-                
-                <audio expr="controller.playBackPrompt(field,record)"/>
-                <audio expr="controller.playRerecordPrompt(field)"/>
-            </prompt>
-            <grammar mode="dtmf" version="1.0" root="root">
-                <rule id="root" scope="public">
-                    <one-of>
-                        <item>1</item>
-                    </one-of>
-                </rule>
-            </grammar>
-            <noinput>
-                <script>
-                    controller.capture(record);
-                </script>
-                <goto next="#record_form"/>
-            </noinput>
-	    <nomatch>
-		<script>
-                    controller.capture(record);
-                </script>
-                <goto next="#record_form"/>
-	    </nomatch>
-            <filled>
-                <if cond="confirm=='1'">
-                    <goto next="#record_form"/>
-                </if>
+           <block>
+             <if cond="field=='name'">
+                <goto nextitem="nameRecord"/>
+             <else/>
+                 <goto nextitem="fieldRecord"/>
+             </if>
+           </block>
+          
+           <field name="confirm" type="boolean">
+              <prompt bargein="false">
+                   Playback is <value expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))" />
+                   <audio expr="controller.playConfirmPrompt(field)"/>
+                   <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
+                   <audio expr="controller.playRerecordPrompt(field)"/>
+               </prompt>
+               <grammar mode="dtmf" version="1.0" root="root">
+                   <rule id="root" scope="public">
+                       <one-of>
+                           <item>1</item>
+                       </one-of>
+                   </rule>
+               </grammar>
+               <noinput>
+                   <script>
+                       controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                   </script>
+                   <goto next="#record_form"/>
+               </noinput>
+                <nomatch>
                     <script>
-                        controller.capture(record);
-                    </script>
-                    <goto next="#record_form"/>
-            </filled>
-        </field>
+                       controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                   </script>
+                   <goto next="#record_form"/>
+                </nomatch>
+               <filled>
+                   <if cond="confirm=='1'">
+                       <goto next="#record_form"/>
+                   </if>
+                       <script>
+                           controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                       </script>
+                       <goto next="#record_form"/>
+               </filled>
+           </field>
         <block name="submit_form">
             <script>
                 var name = controller.name();
@@ -124,5 +120,50 @@
                   namelist="session.connection.remote.uri designation district block panchayat"/>
             <goto next="controller.nextFlow(session.connection.local.uri)"/>
         </block>
+       
+      <record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
+            <grammar mode="dtmf" version="1.0" root="root">
+                  <rule id="root" scope="public">
+                        <one-of>
+                         <item>1</item>
+                        </one-of>
+                  </rule>
+            </grammar>
+
+         <noinput>
+             <prompt bargein="false">
+                  <audio expr="controller.playNoInputPrompt(field)"/>
+             </prompt>
+         </noinput>
+      </record>
+        
+        
+        <field name="fieldRecord">
+
+               <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
+
+               <grammar mode="dtmf" version="1.0" root="root">
+                   <rule id="root" scope="public">
+                       <one-of>
+                           <item>1</item>
+                       </one-of>
+                   </rule>
+               </grammar>
+
+           <noinput>
+               <prompt bargein="false">
+                  inside noinput
+                   <audio expr="controller.playNoInputPrompt(field)"/>
+               </prompt>
+           </noinput>
+            <nomatch>
+                  <prompt> no match count two is successful. </prompt>
+            </nomatch>
+            <filled>
+                  <log expr="'LOG_MTK : Filled for field record.'" />
+                  <log expr="'LOG_MTK : ' + fieldRecord" />
+            </filled>
+       </field>
+       
     </form>
 </vxml>

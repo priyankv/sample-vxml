@@ -33,12 +33,12 @@ var metaData  = {
 		"register.district.say" : "0012_district.wav",
 		"register.district.confirm" : "0013_district_pb.wav",
 		"register.district.rerecord" : "0014_district_repeat.wav",
+		"register.district.noinput" : "0012_district.wav",
 		
 		"register.block.say" : "0015_block.wav",
 		"register.block.confirm" : "0016_block_pb.wav",
 		"register.block.rerecord" : "0017_block_repeat.wav",
-	
-		"register.district.noinput" : "0012_district.wav",
+		"register.block.noinput" : "0015_block.wav",		
 		
 		"register.panchayat.say" : "0018_panchayat.wav",
 		"register.panchayat.confirm" : "0019_panchayat_pb.wav",
