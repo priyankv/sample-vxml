@@ -41,6 +41,10 @@
     </form>
 
     <form id="record_form">
+        <script>
+            promptContext.resetCounts();
+        </script>
+
         <block>
            <if cond="controller.allCaptured()">
                <goto nextitem="submit_form"/>
