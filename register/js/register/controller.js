@@ -34,7 +34,7 @@ var RegisterController = function(metadata) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".rerecord"];
     };
 
-   this.isNotVoiceRecognised = function(field) {
+   this.isVoiceRecognised = function(field) {
         return field != "name" || field != "designation";
     };
 
@@ -67,10 +67,10 @@ var RegisterController = function(metadata) {
     };
     
      this.playBackPrompt = function(field,record) {
-        if(this.isNotVoiceRecognised(field))
-            return record;
+        if(this.isVoiceRecognised(field))
+            return this.playBack(record);
         else
-           return this.playBack(record);
+           return record;
     };
 
     this.designation = function() {
