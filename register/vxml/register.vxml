@@ -73,8 +73,6 @@
            <field name="confirm" type="boolean">
               <prompt bargein="false">
                    <audio expr="controller.playConfirmPrompt(field)"/>
-                   Playback is <value expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))" />
-                   <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
                    <audio expr="controller.playRerecordPrompt(field)"/>
                </prompt>
                <grammar mode="dtmf" version="1.0" root="shouldRepeat">
