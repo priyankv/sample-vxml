@@ -52,7 +52,7 @@
            </if>
         </block>
         <script>
-               var field = controller.nextField();
+               field = controller.nextField();
         </script>
 
        <block>
