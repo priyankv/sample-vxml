@@ -35,7 +35,7 @@ var RegisterController = function(metadata) {
     };
 
    this.isVoiceRecognised = function(field) {
-        return field != "name" || field != "designation";
+        return field != "name" && field != "designation";
     };
 
     this.submitUrl = function() {
