@@ -53,7 +53,7 @@
        <block>
            <prompt bargein="false">
                <audio expr="controller.playPrompt(field)"/>
-               <audio src="controller.playBeep()"/>
+               <audio expr="controller.playBeep()"/>
            </prompt>
        </block>
 
