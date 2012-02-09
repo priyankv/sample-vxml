@@ -69,9 +69,12 @@
        </block>
                     		            
        <field name="confirm" type="boolean">
+            <script>
+               var record = (nameRecord != undefined) ? nameRecord : fieldRecord;
+            </script>
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
-               <audio expr="controller.playBackPrompt(field,((nameRecord != undefined) ? nameRecord : fieldRecord))"/>
+               <audio expr="controller.playBackPrompt(field,record)"/>
                <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
@@ -83,13 +86,13 @@
             </grammar>
             <noinput>
                <script>
-                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                   controller.capture(record);
                </script>
                <goto next="#record_form"/>
             </noinput>
             <nomatch>
                 <script>
-                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                   controller.capture(record);
                </script>
                <goto next="#record_form"/>
             </nomatch>
@@ -98,7 +101,7 @@
                    <goto next="#record_form"/>
                </if>
                <script>
-                   controller.capture(((nameRecord != undefined) ? nameRecord : fieldRecord));
+                   controller.capture(record);
                </script>
                <goto next="#record_form"/>
            </filled>
