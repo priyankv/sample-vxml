@@ -11,7 +11,6 @@
         <![CDATA[
         var controller = new RegisterController(metaData);
         var promptContext = new PromptContext(metaData);
-        var record;
          ]]>
     </script>
 
@@ -27,10 +26,10 @@
                 <option dtmf="2" value="ASHA"/>
                 <option dtmf="3" value="ANGANWADI"/>
             <noinput>
-                <value expr="controller.playPrompt('designation')"/>
+                <audio expr="controller.playPrompt('designation')"/>
             </noinput>
             <nomatch>
-                <value expr="controller.playPrompt('designation')"/>
+                <audio expr="controller.playPrompt('designation')"/>
             </nomatch>
             <filled>
                 <script>
@@ -63,12 +62,12 @@
 
        <block>
             <if cond="field=='name'">
-                <goto nextitem="nameRecord"/>
+            <goto nextitem="nameRecord"/>
             <else/>
              <goto nextitem="fieldRecord"/>
             </if>
        </block>
-                    		            
+
        <field name="confirm" type="boolean">
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
@@ -104,7 +103,7 @@
                <goto next="#record_form"/>
            </filled>
        </field>
-           	   	   
+
         <block name="submit_form">
             <script>
                 var name = controller.name();
@@ -119,7 +118,7 @@
                   namelist="session.connection.remote.uri designation district block panchayat"/>
             <goto next="controller.nextFlow(session.connection.local.uri)"/>
         </block>
-              	          
+
         <record name="nameRecord" type="x-wav" beep="false" maxtime="10s" finalsilence="4000ms"  dtmfterm="true">
             <grammar mode="dtmf" version="1.0" root="root">
                   <rule id="root" scope="public">
@@ -130,28 +129,25 @@
             </grammar>
 
             <noinput>
-              <script>
+                <script>
                     promptContext.gotNoInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxNoInputs()">
-                    <log expr="'LOG_MTK : noinput disconnecting'" />
                     <disconnect/>
                 <else/>
-                    <log expr="'LOG_MTK : noinput prompting for ' + field + 'again'"/>
                      <prompt bargein="false">
                           <audio expr="controller.playNoInputPrompt(field)"/>
                      </prompt>
-                    <goto nextitem="fieldRecord" />
+                     <goto nextitem="fieldRecord" />
                  </if>
             </noinput>
             <filled>
-              <assign name="record" expr="nameRecord"/>
+              <assign name="record" expr="fieldRecord"/>
             </filled>
         </record>
-                		        
-                		        
-        <field name="fieldRecord">
 
+
+        <field name="fieldRecord">
             <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
 
             <grammar mode="dtmf" version="1.0" root="root">
@@ -163,41 +159,35 @@
             </grammar>
 
            <noinput>
-                <log expr="'LOG_MTK : No input ' + promptContext.getNoInputCount()" />
                 <script>
                     promptContext.gotNoInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxNoInputs()">
-                    <log expr="'LOG_MTK : noinput disconnecting'" />
                     <disconnect/>
                 <else/>
-                    <log expr="'LOG_MTK : noinput prompting for ' + field + 'again'"/>
                    <prompt bargein="false">
                        <audio expr="controller.playNoInputPrompt(field)"/>
                    </prompt>
-                    <goto nextitem="fieldRecord" />
+                   <goto nextitem="fieldRecord" />
                </if>
            </noinput>
             <nomatch>
-                <log expr="'LOG_MTK : No match ' + promptContext.getInvalidInputCount()" />
                  <script>
                     promptContext.gotInvalidInput();
                 </script>
                 <if cond="promptContext.hasExceededMaxInvalidInputs()">
-                    <log expr="'LOG_MTK : nomatch disconnecting'" />
                     <disconnect/>
                 <else/>
-                    <log expr="'LOG_MTK : nomatch prompting for ' + field + 'again'"/>
-                   <prompt bargein="false">
-                       <audio expr="controller.playNoInputPrompt(field)"/>
-                   </prompt>
-                    <goto nextitem="fieldRecord" />
+               <prompt bargein="false">
+                   <audio expr="controller.playNoInputPrompt(field)"/>
+               </prompt>
+               <goto nextitem="fieldRecord" />
                </if>
             </nomatch>
             <filled>
               <assign name="record" expr="fieldRecord"/>
             </filled>
        </field>
-              	          
+
     </form>
 </vxml>
