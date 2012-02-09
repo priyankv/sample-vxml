@@ -63,20 +63,13 @@
 
        <block>
             <if cond="field=='name'">
-            <goto nextitem="nameRecord"/>
+                <goto nextitem="nameRecord"/>
             <else/>
              <goto nextitem="fieldRecord"/>
             </if>
        </block>
                     		            
        <field name="confirm" type="boolean">
-            <block>
-              <if cond="nameRecord">
-                  <script>record = nameRecord;</script>
-              <else/> 
-                  <script>record = fieldRecord;</script>
-              </if>
-            </block>
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
                <audio expr="controller.playBackPrompt(field,record)"/>
@@ -137,7 +130,6 @@
             </grammar>
 
             <noinput>
-              <log expr="'LOG_MTK : No input ' + promptContext.getNoInputCount()" />
               <script>
                     promptContext.gotNoInput();
                 </script>
@@ -152,6 +144,9 @@
                     <goto nextitem="fieldRecord" />
                  </if>
             </noinput>
+            <filled>
+              <assign name="record" expr="nameRecord"/>
+            </filled>
         </record>
                 		        
                 		        
@@ -199,6 +194,9 @@
                     <goto nextitem="fieldRecord" />
                </if>
             </nomatch>
+            <filled>
+              <assign name="record" expr="fieldRecord"/>
+            </filled>
        </field>
               	          
     </form>
