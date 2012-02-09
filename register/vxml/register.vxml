@@ -71,11 +71,11 @@
                     		            
        <field name="confirm" type="boolean">
             <block>
-              <script>
-                if (nameRecord != undefined)
-                      record = nameRecord;
-                else record = fieldRecord;
-              </script>
+              <if cond="nameRecord">
+                  <script>record = nameRecord;</script>
+              <else/> 
+                  <script>record = fieldRecord;</script>
+              </if>
             </block>
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
