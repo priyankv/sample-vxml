@@ -1,27 +1,26 @@
 var RegisterController = function(metadata) {
-
     var metadata = metadata;
-    var count = 0;
+    var fieldCounter = 0;
     var records = [];
     var fields = ["designation", "name", "district", "block", "panchayat"];
 
     this.nextField = function() {
-        return fields[count];
+        return fields[fieldCounter];
     };
 
     this.capture = function(record) {
-        records[count] = record;
-        count++;
+        records[fieldCounter] = record;
+        fieldCounter++;
     };
 
     this.allCaptured = function() {
-        return count >= fields.length;
+        return fieldCounter >= fields.length;
     };
 
     this.playPrompt = function(field) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".say"];
     };
-    
+
     this.playBeep = function(field) {
         return metadata["audio.url"] +metadata['register.audio.url']+ metadata['registration.beep.audio'] ;
     };
@@ -38,7 +37,11 @@ var RegisterController = function(metadata) {
         return metadata["audio.url"] + metadata['register.audio.url'] + metadata["register." + field + ".rerecord"];
     };
 
-   this.isVoiceRecognised = function(field) {
+    this.playRegistrationDone = function(field) {
+        return metadata["audio.url"] + metadata['register.audio.url'] + metadata['register.complete'];
+    };
+
+    this.isVoiceRecognised = function(field) {
         return field != "name" && field != "designation";
     };
 
@@ -58,24 +61,22 @@ var RegisterController = function(metadata) {
     };
 
     this.getGrammar = function(field) {
-        if(field == 'name')
-            return metadata["grammar.url"] + metadata["grammar.title.name"] + ".grxml"
         if (field == 'district')
             return metadata["grammar.url"] + metadata["grammar.title.district"] + ".grxml";
         else
-            return metadata["grammar.url"] + metadata["grammar.title." + field] + records[count - 1] + ".grxml";
+            return metadata["grammar.url"] + metadata["grammar.title." + field] + records[fieldCounter - 1] + ".grxml";
     };
 
     this.playBack = function(record) {
         return metadata["audio.url"]  + metadata['location.audio.url']+ record + ".wav";
     };
-    
-     this.playBackPrompt = function(field,record) {
+
+    this.playBackPrompt = function(field,record) {
         if(this.isVoiceRecognised(field))
             return this.playBack(record);
         else
            return record;
-    };
+        };
 
     this.designation = function() {
         return records[0];
@@ -97,4 +98,3 @@ var RegisterController = function(metadata) {
         return records[4];
     };
 };
-

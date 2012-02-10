@@ -3,8 +3,8 @@
 <vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml21/vxml.xsd">
-<script srcexpr="'/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
-<script src="/ananya/js/entry/controller.js"/>
+<script srcexpr="'../dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
+<script src="../js/entry/controller.js"/>
 <script>
     <![CDATA[
     var controller = new EntryController(callerData);

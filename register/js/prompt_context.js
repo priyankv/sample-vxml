@@ -7,14 +7,6 @@ var PromptContext = function (metadata) {
         this.formToGoToAfterValidInput = null;
     };
 
-    this.getInvalidInputCount = function() {
-        return this.invalidInputCount;
-    }
-    
-    this.getNoInputCount = function() {
-        return this.noInputCount;
-    }
-
     this.gotInvalidInput = function() {
         this.invalidInputCount++;
     };
