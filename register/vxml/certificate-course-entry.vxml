@@ -226,7 +226,7 @@
                <disconnect/>
 
            <else/>
-             <audio src="http://221.134.198.15/ananya/audioTest/jobaid/0000_error_in_pressing_number.wav"/>
+             <audio expr="promptContext.audioForInvalidInputRetry()"/>
 
              <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav"/>
 
