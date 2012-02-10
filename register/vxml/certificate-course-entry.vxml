@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
@@ -7,13 +6,13 @@
 
       xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml21/vxml.xsd">
 
-<script srcexpr="'/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
+<script srcexpr="'../dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
 
-<script src="/ananya/js/entry/controller.js"/>
+<script src="../js/entry/controller.js"/>
 
-<script src="../../../js/prompt_context.js"/>
+<script src="../js/prompt_context.js"/>
 
-<script src="../../../dynamic/js/metadata.js"/>
+<script src="../dynamic/js/metadata.js"/>
 
 <script>
 
