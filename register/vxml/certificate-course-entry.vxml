@@ -227,7 +227,7 @@
 
            <else/>
              <audio expr="promptContext.audioForInvalidInputRetry()"/>
-            <log expr="'LOG:MOTECH:'promptContext.audioForInvalidInputRetry()"/>
+           
 
              <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav"/>
 
