@@ -1,83 +1,239 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
+
 <vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
+
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
       xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml21/vxml.xsd">
-<script srcexpr="'../dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
-<script src="../js/entry/controller.js"/>
+
+<script srcexpr="'/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
+
+<script src="/ananya/js/entry/controller.js"/>
+
+<script src="../../../js/prompt_context.js"/>
+
+<script src="../../../dynamic/js/metadata.js"/>
+
 <script>
+
     <![CDATA[
+
     var controller = new EntryController(callerData);
+
+    var promptContext = new PromptContext(metaData);
+
     ]]>
+
 </script>
+
+
 
 <property name="bargein" value="true"/>
 
+
+
 <form id="controller">
+
     <block>
+
         <prompt>
+
             <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0002_wp_ama_ar.wav"></audio>
+
         </prompt>
+
         <goto expr="controller.decideFlowForCertificateCourse()"/>
+
     </block>
+
 </form>
+
+
 
 <form id="registered_bookmark_present">
+
     <block>
+
         <goto next="/ananya/vxml/certificatecourse.vxml"/>
+
     </block>
+
 </form>
+
+
 
 <form id="registered_bookmark_absent">
+
         <field name="repeat">
+
         <prompt bargein="false">
-                            <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0006_alreadyreg.wav"/>
-                    </prompt>
+
+            <audio src="$prompt"/>
+
+        </prompt>
+
         <grammar mode="dtmf" version="1.0" root="root">
+
             <rule id="root" scope="public">
+
                 <one-of>
+
                     <item>1</item>
+
                     <item>2</item>
+
                 </one-of>
+
             </rule>
+
         </grammar>
+
         <filled>
+
             <if cond="repeat == '1'">
+
                 <goto next="#controller"/>
+
                 <elseif cond="repeat == '2'"/>
+
                 <goto next="/ananya/vxml/certificatecourse.vxml"/>
+
             </if>
+
         </filled>
+
+        <noinput>
+
+          <script>
+
+              promptContext.gotNoInput();
+
+          </script>
+
+          <if cond="promptContext.hasExceededMaxNoInputs()">
+
+               <disconnect/>
+
+          <else/>
+
+               <reprompt/>
+
+          </if>
+
+        </noinput>
+
         <nomatch>
-            <reprompt/>
+
+           <script>
+
+               promptContext.gotInvalidInput();
+
+           </script>
+
+           <if cond="promptContext.hasExceededMaxInvalidInputs()">
+
+               <disconnect/>
+
+           <else/>
+
+              <reprompt/>
+
+           </if>
+
         </nomatch>
+
     </field>
+
 </form>
 
+
+
 <form id="unregistered">
+
+        <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0005_register1.wav"/>
+
         <field name="repeat">
+
         <prompt bargein="false">
-                            <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0005_register1.wav"/>
-                            <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav"/>
-                    </prompt>
+
+            <audio src="$prompt"/>
+
+        </prompt>
+
         <grammar mode="dtmf" version="1.0" root="root">
+
             <rule id="root" scope="public">
+
                 <one-of>
+
                     <item>1</item>
+
                     <item>2</item>
+
                 </one-of>
+
             </rule>
+
         </grammar>
+
         <filled>
+
             <if cond="repeat == '1'">
+
                 <goto next="#controller"/>
+
                 <elseif cond="repeat == '2'"/>
+
                 <goto next="/ananya/vxml/register.vxml"/>
+
             </if>
+
         </filled>
+
+        <noinput>
+
+          <script>
+
+              promptContext.gotNoInput();
+
+          </script>
+
+          <if cond="promptContext.hasExceededMaxNoInputs()">
+
+               <disconnect/>
+
+          <else/>
+
+               <reprompt/>
+
+          </if>
+
+        </noinput>
+
         <nomatch>
-            <reprompt/>
+
+           <script>
+
+               promptContext.gotInvalidInput();
+
+           </script>
+
+           <if cond="promptContext.hasExceededMaxInvalidInputs()">
+
+               <disconnect/>
+
+           <else/>
+
+              <reprompt/>
+
+           </if>
+
         </nomatch>
+
     </field>
+
 </form>
+
 </vxml>
+
