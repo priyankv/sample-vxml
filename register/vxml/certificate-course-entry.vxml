@@ -217,7 +217,7 @@
 
                promptContext.gotInvalidInput();
 
-               <audio expr="promptContext.audioForInvalidInputRetry()"/>
+              
 
            </script>
 
@@ -226,6 +226,7 @@
                <disconnect/>
 
            <else/>
+             <audio expr="promptContext.audioForInvalidInputRetry()"/>
 
               <reprompt/>
 
