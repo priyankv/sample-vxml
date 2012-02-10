@@ -11,7 +11,7 @@ var metaData  = {
 		"option.to.top.level.audio" : "nav_0009_help_prompt.wav",
 
 		
-		"audio.url" : "http://221.134.198.15/ananya/audio/",
+		"audio.url" : "http://221.134.198.15/ananya/audioTest/",
 		"location.audio.url" : "location/",
 		"register.audio.url" : "register/",
 		"jobaid.audio.url" : "jobaid/",
