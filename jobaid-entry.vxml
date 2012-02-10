@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml21/vxml.xsd">
+<script srcexpr="'/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
+<script src="/ananya/js/entry/controller.js"/>
+<script>
+    <![CDATA[
+    var controller = new EntryController(callerData);
+    ]]>
+</script>
+
+<form id="controller">
+    <block>
+        <goto expr="controller.decideFlowForJobAid()"/>
+    </block>
+</form>
+
+<form id="unregistered">
+    <block>
+            <audio src="http://221.134.198.15/ananya/audioTest/jobaid/0001_wp_jobaid.wav"/>
+            <audio src="http://221.134.198.15/ananya/audioTest/jobaid/0003_hisse_jobaid.wav"/>
+            <audio src="http://221.134.198.15/ananya/audioTest/jobaid/0004_register2.wav"/>
+        <goto next="/ananya/vxml/register.vxml"/>
+    </block>
+</form>
+
+<form id="registered">
+    <block>
+        <goto next="/ananya/vxml/jobaid.vxml"/>
+    </block>
+</form>
+</vxml>
