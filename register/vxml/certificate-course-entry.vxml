@@ -148,6 +148,7 @@
 
 
 
+
 <form id="unregistered">
 
         <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0005_register1.wav"/>
@@ -156,7 +157,7 @@
 
         <prompt bargein="false">
 
-            <audio src="http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav"/>
+            <audio src="[http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav]"/>
 
         </prompt>
 
@@ -215,6 +216,8 @@
            <script>
 
                promptContext.gotInvalidInput();
+
+               <audio expr="promptContext.audioForInvalidInputRetry()"/>
 
            </script>
 
