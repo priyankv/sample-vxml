@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
@@ -6,13 +7,13 @@
 
       xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml21/vxml.xsd">
 
-<script srcexpr="'../dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
+<script srcexpr="'/ananya/dynamic/js/caller_data.js?callerId=' + session.connection.remote.uri"/>
 
-<script src="../js/entry/controller.js"/>
+<script src="/ananya/js/entry/controller.js"/>
 
-<script src="../js/prompt_context.js"/>
+<script src="../../../js/prompt_context.js"/>
 
-<script src="../dynamic/js/metadata.js"/>
+<script src="../../../dynamic/js/metadata.js"/>
 
 <script>
 
@@ -68,7 +69,7 @@
 
         <prompt bargein="false">
 
-            <audio src="$prompt"/>
+            <audio src="[http://221.134.198.15/ananya/audioTest/certificatecourse/0006_alreadyreg.wav]"/>
 
         </prompt>
 
@@ -156,7 +157,7 @@
 
         <prompt bargein="false">
 
-            <audio src="$prompt"/>
+            <audio src="[http://221.134.198.15/ananya/audioTest/certificatecourse/0007_notreg.wav]"/>
 
         </prompt>
 
