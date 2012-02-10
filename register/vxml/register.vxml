@@ -25,11 +25,25 @@
                 <option dtmf="1" value="ANM"/>
                 <option dtmf="2" value="ASHA"/>
                 <option dtmf="3" value="ANGANWADI"/>
-            <noinput>
-                <audio expr="controller.playPrompt('designation')"/>
+           <noinput>
+                <script>
+                      promptContext.gotNoInput();
+                  </script>
+                  <if cond="promptContext.hasExceededMaxNoInputs()">
+                       <disconnect/>
+                  <else/>
+                    <audio expr="controller.playPrompt('designation')"/>
+                  </if>
             </noinput>
             <nomatch>
-                <audio expr="controller.playPrompt('designation')"/>
+                 <script>
+                       promptContext.gotInvalidInput();
+                   </script>
+                   <if cond="promptContext.hasExceededMaxInvalidInputs()">
+                       <disconnect/>
+                   <else/>
+                        <audio expr="controller.playPrompt('designation')"/>
+                    </if>
             </nomatch>
             <filled>
                 <script>
