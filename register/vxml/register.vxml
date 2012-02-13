@@ -93,6 +93,8 @@
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
                <audio expr="controller.playBackPrompt(field,record)"/>
+            </prompt>
+            <prompt bargein="false">
                <audio expr="controller.playRerecordPrompt(field)"/>
             </prompt>
             <grammar mode="dtmf" version="1.0" root="root">
@@ -110,9 +112,7 @@
               <if cond="promptContext.hasExceededMaxNoInputs()">
                    <disconnect/>
               <else/>
-                   <prompt>
-                         <audio expr="controller.playRerecordPrompt(field)"/>
-                   </prompt>
+                  <reprompt/>
               </if>
             </noinput>
             <nomatch>
@@ -122,9 +122,7 @@
                <if cond="promptContext.hasExceededMaxInvalidInputs()">
                    <disconnect/>
                <else/>
-                   <prompt>
-                       <audio expr="controller.playRerecordPrompt(field)"/>
-                   </prompt>
+                  <reprompt/>
                </if>
             </nomatch>
            <filled>
