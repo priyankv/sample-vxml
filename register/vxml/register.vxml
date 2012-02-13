@@ -106,6 +106,8 @@
                </rule>
             </grammar>
               <filled>
+              <log expr="'Pressed ' + confirm"/>
+              <log expr="'Condition evals to: ' + (confirm == '1') "/>
                <if cond="confirm == '1'">
                    <goto next="#record_form"/>
                <elseif cond="confirm == '2'"/>
