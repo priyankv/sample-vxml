@@ -85,6 +85,11 @@
        </block>
 
        <field name="confirm" type="boolean">
+            <block>
+             <script>
+             promptContext.resetCounts();
+             </script>
+            </block>
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
                <audio expr="controller.playBackPrompt(field,record)"/>
@@ -100,7 +105,6 @@
             </grammar>
             <noinput>
               <script>
-                  promptContext.resetCounts();
                   promptContext.gotNoInput();
               </script>
               <if cond="promptContext.hasExceededMaxNoInputs()">
