@@ -85,10 +85,10 @@
        </block>
 
        <field name="confirm" type="boolean">
-            <block>
-             <script>
-             promptContext.resetCounts();
-             </script>
+             <block>
+                 <script>
+                    promptContext.resetCounts();
+                 </script>
             </block>
             <prompt bargein="false">
                <audio expr="controller.playConfirmPrompt(field)"/>
@@ -110,10 +110,9 @@
               <if cond="promptContext.hasExceededMaxNoInputs()">
                    <disconnect/>
               <else/>
-                   <script>
-                       controller.capture(record);
-                   </script>
-                   <goto next="#record_form"/>
+                   <prompt>
+                         <audio expr="controller.playRerecordPrompt(field)"/>
+                   </prompt>
               </if>
             </noinput>
             <nomatch>
@@ -123,21 +122,20 @@
                <if cond="promptContext.hasExceededMaxInvalidInputs()">
                    <disconnect/>
                <else/>
+                   <prompt>
+                       <audio expr="controller.playRerecordPrompt(field)"/>
+                   </prompt>
+               </if>
+            </nomatch>
+           <filled>
+               <if cond="confirm=='1'">
+                   <goto next="#recorsd_form"/>
+               <else/>
                    <script>
                        controller.capture(record);
                    </script>
                    <goto next="#record_form"/>
                </if>
-            </nomatch>
-           <filled>
-               <if cond="confirm=='1'">
-                   <goto next="#record_form"/>
-              <else/>
-                   <script>
-                       controller.capture(record);
-                   </script>
-                   <goto next="#record_form"/>
-              </if>
            </filled>
        </field>
 
