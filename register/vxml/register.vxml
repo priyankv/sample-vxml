@@ -184,14 +184,6 @@
         <field name="fieldRecord">
             <grammar srcexpr="controller.getGrammar(field)" type="application/srgs+xml"/>
 
-            <grammar mode="dtmf" version="1.0" root="root">
-               <rule id="root" scope="public">
-                   <one-of>
-                       <item>1</item>
-                   </one-of>
-               </rule>
-            </grammar>
-
            <noinput>
                 <script>
                     promptContext.gotNoInput();
