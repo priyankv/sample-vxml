@@ -107,7 +107,7 @@
             </grammar>
               <filled>
                <if cond="confirm == '1'">
-                   <goto next="#recorsd_form"/>
+                   <goto next="#record_form"/>
                <elseif cond="confirm == '2'"/>
                    <script>
                        controller.capture(record);
