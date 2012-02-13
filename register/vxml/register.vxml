@@ -210,6 +210,7 @@
                     <disconnect/>
                 <else/>
                <prompt bargein="false">
+                  <audio expr="promptContext.audioForInvalidInputRetry()"/>
                    <audio expr="controller.playNoInputPrompt(field)"/>
                    <audio expr="controller.playBeep()"/>
                </prompt>
