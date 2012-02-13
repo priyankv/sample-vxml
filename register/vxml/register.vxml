@@ -105,6 +105,16 @@
                    </one-of>
                </rule>
             </grammar>
+              <filled>
+               <if cond="confirm == '1'">
+                   <goto next="#recorsd_form"/>
+               <elseif cond="confirm == '2'"/>
+                   <script>
+                       controller.capture(record);
+                   </script>
+                   <goto next="#record_form"/>
+               </if>
+           </filled>
             <noinput>
               <script>
                   promptContext.gotNoInput();
@@ -125,16 +135,7 @@
                   <reprompt/>
                </if>
             </nomatch>
-           <filled>
-               <if cond="confirm == '1'">
-                   <goto next="#recorsd_form"/>
-               <elseif cond="confirm == '2'"/>
-                   <script>
-                       controller.capture(record);
-                   </script>
-                   <goto next="#record_form"/>
-               </if>
-           </filled>
+         
        </field>
 
         <block name="submit_form">
