@@ -84,7 +84,7 @@
             </if>
        </block>
 
-       <field name="confirm" type="boolean">
+       <field name="confirm">
              <block>
                  <script>
                     promptContext.resetCounts();
