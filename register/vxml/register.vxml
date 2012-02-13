@@ -128,9 +128,9 @@
                </if>
             </nomatch>
            <filled>
-               <if cond="confirm=='1'">
+               <if cond="confirm == '1'">
                    <goto next="#recorsd_form"/>
-               <else/>
+               <elseif cond="confirm == '2'"/>
                    <script>
                        controller.capture(record);
                    </script>
